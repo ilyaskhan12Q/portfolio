@@ -1,0 +1,58 @@
+.bclock {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+}
+
+.bclock-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bclock-digits {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
+}
+
+.bclock-bit {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--surface-border);
+  border: 1px solid var(--line);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bclock-bit.on {
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent), 0 0 2px var(--accent);
+  border-color: var(--accent);
+}
+
+.bclock-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.bclock-compact {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.bclock-colon {
+  color: var(--text-faint);
+  padding: 0 1px;
+}
+
+.bclock-sec {
+  color: var(--accent);
+}

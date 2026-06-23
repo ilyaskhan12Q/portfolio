@@ -1,0 +1,21 @@
+.notfound-page {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.notfound-code {
+  color: var(--text-faint);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.notfound-title {
+  font-size: clamp(20px, 4vw, 28px);
+  color: var(--alert);
+  margin-bottom: 16px;
+}
+
+.notfound-desc {
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}

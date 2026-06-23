@@ -1,0 +1,142 @@
+.projects-page {
+  padding: 56px 0 80px;
+}
+
+.projects-head {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.page-id {
+  font-size: 15px;
+  color: var(--accent);
+}
+
+.page-sub {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.filter-chip {
+  font-size: 12px;
+  padding: 7px 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  transition: all 0.15s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--text-faint);
+  color: var(--text);
+}
+
+.filter-chip.active {
+  background: var(--accent-wash);
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.plist {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.plist-header,
+.plist-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 180px 110px 70px;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+}
+
+.plist-header {
+  background: var(--surface);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.plist-row {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s ease;
+}
+
+.plist-row:last-child {
+  border-bottom: none;
+}
+
+.plist-row:hover {
+  background: var(--surface);
+}
+
+.col-pid {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+.col-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.plist-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.plist-tagline {
+  font-size: 12px;
+  color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col-cat {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.col-year {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .plist-header { display: none; }
+  .plist-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px;
+  }
+  .col-pid { order: 1; }
+  .col-name { order: 2; }
+  .col-cat { order: 3; }
+  .col-status { order: 4; }
+  .col-year { order: 5; text-align: left; }
+  .plist-tagline { white-space: normal; }
+}

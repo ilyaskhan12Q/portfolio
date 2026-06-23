@@ -1,0 +1,44 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  border: 1px solid var(--surface-border);
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.status-active {
+  color: var(--accent);
+  border-color: rgba(0, 255, 102, 0.25);
+  background: var(--accent-wash);
+}
+.status-active .status-dot {
+  background: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
+}
+
+.status-shipped {
+  color: var(--text-dim);
+  border-color: var(--surface-border);
+}
+.status-shipped .status-dot {
+  background: var(--text-faint);
+}
+
+.status-progress {
+  color: var(--amber);
+  border-color: rgba(255, 184, 107, 0.25);
+  background: rgba(255, 184, 107, 0.08);
+}
+.status-progress .status-dot {
+  background: var(--amber);
+  box-shadow: 0 0 5px var(--amber);
+}
