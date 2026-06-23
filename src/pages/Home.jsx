@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { featuredProjects } from '../data/projects';
 import { stats, profile } from '../data/profile';
 import StatusBadge from '../components/StatusBadge';
 import './Home.css';
+
+const Hero3DScene = lazy(() => import('../components/Hero3DScene'));
 
 const BOOT_LINES = [
   { text: 'booting ilyaskhan.sys ...', delay: 0 },
@@ -35,6 +37,30 @@ function BootSequence() {
 }
 
 export default function Home() {
+  const [use3D, setUse3D] = useState(false);
+
+  useEffect(() => {
+    // Check for WebGL support
+    const hasWebGL = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        return !!(
+          window.WebGLRenderingContext &&
+          (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+        );
+      } catch (e) {
+        return false;
+      }
+    };
+
+    // Check for prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hasWebGL() && !prefersReducedMotion) {
+      setUse3D(true);
+    }
+  }, []);
+
   return (
     <>
       <section className="hero">
@@ -65,10 +91,18 @@ export default function Home() {
               <div className="hero-terminal-dots">
                 <span /><span /><span />
               </div>
-              <span className="mono hero-terminal-title">boot.log</span>
+              <span className="mono hero-terminal-title">
+                {use3D ? 'clock.sys' : 'boot.log'}
+              </span>
             </div>
-            <div className="hero-terminal-body">
-              <BootSequence />
+            <div className={`hero-terminal-body ${use3D ? 'hero-terminal-body-3d' : ''}`}>
+              {use3D ? (
+                <Suspense fallback={<BootSequence />}>
+                  <Hero3DScene />
+                </Suspense>
+              ) : (
+                <BootSequence />
+              )}
             </div>
           </div>
         </div>
