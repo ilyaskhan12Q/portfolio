@@ -20,7 +20,7 @@ function Column3D({ x, yPositions, bits, value, label }) {
         color="#7a8479" // var(--text-dim)
         anchorX="center"
         anchorY="middle"
-        font="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.20/files/jetbrains-mono-latin-400-normal.woff2" // Fallback JetBrains Mono font
+        font="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.20/files/jetbrains-mono-latin-400-normal.woff" // Fallback JetBrains Mono font
       >
         {label}
       </Text>
