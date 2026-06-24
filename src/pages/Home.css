@@ -137,18 +137,6 @@
   min-height: 200px;
 }
 
-.hero-terminal-body-3d {
-  padding: 0 !important;
-  height: 380px;
-  position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 640px) {
-  .hero-terminal-body-3d {
-    height: 300px;
-  }
-}
 
 .boot-line {
   font-size: 13px;
