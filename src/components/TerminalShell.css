@@ -1,0 +1,79 @@
+/* ===== INTERACTIVE TERMINAL SHELL ===== */
+.tshell {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: 16px 20px 12px;
+  min-height: 200px;
+  max-height: 260px;
+  overflow-y: auto;
+  cursor: text;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overscroll-behavior: contain;
+}
+
+/* Custom scrollbar inside shell */
+.tshell::-webkit-scrollbar { width: 4px; }
+.tshell::-webkit-scrollbar-track { background: transparent; }
+.tshell::-webkit-scrollbar-thumb { background: var(--surface-border); }
+
+.tshell-entry {
+  margin-bottom: 6px;
+}
+
+.tshell-cmd {
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.tshell-prompt {
+  color: var(--accent);
+  flex-shrink: 0;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tshell-input-echo {
+  color: var(--text);
+  white-space: pre;
+}
+
+/* Output line types */
+.tshell-line { padding-left: 0; }
+.tshell-line--normal  { color: var(--text); }
+.tshell-line--dim     { color: var(--text-dim); }
+.tshell-line--accent  { color: var(--accent); font-weight: 600; }
+.tshell-line--accent-dim { color: var(--accent-dim); }
+.tshell-line--error   { color: var(--alert); }
+
+/* Input row */
+.tshell-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.tshell-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  caret-color: var(--accent);
+  padding-left: 6px;
+}
+
+.tshell-input::placeholder {
+  color: var(--text-faint);
+}
+
+/* Blinking block caret via CSS hack */
+.tshell-input:focus {
+  caret-color: var(--accent);
+  caret-shape: block;
+}

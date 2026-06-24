@@ -1,0 +1,42 @@
+/* ================================================
+   CRT OVERLAY
+   Scanlines + edge vignette layered on top of everything.
+   pointer-events: none so it never blocks interaction.
+   ================================================ */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  /* Scanlines */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+  /* Vignette */
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 60%, transparent 100%);
+}
+
+/* Subtle phosphor flicker — very low amplitude, feels alive not distracting */
+@keyframes crt-flicker {
+  0%   { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: 0.97; }
+  94%  { opacity: 1; }
+  98%  { opacity: 1; }
+  99%  { opacity: 0.96; }
+  100% { opacity: 1; }
+}
+
+.crt-overlay {
+  animation: crt-flicker 8s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-overlay { animation: none; }
+}
