@@ -1,0 +1,156 @@
+# Ilyas Khan — AI/ML Engineer
+
+Ilyas Khan is a final-year BS Computer Science (Artificial Intelligence) student at Abdul Wali Khan University, Mardan (Swat Campus) with an expected graduation in 2027. He builds intelligent systems, AI agents, production machine learning pipelines, and full-stack solutions.
+
+## Contact & Links
+- **Email:** ilyasdev67@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/ilyas-khan67/
+- **GitHub:** https://github.com/ilyaskhan12Q
+- **Portfolio Website:** https://ilyaskhan12q.github.io/portfolio/
+- **Location:** Swat, KP, Pakistan
+
+## Biography & Objective
+Final-year BS Computer Science (AI) student focused on AI/ML engineering, full-stack development, and automation. Hands-on with embedded systems and deploying intelligent solutions on real hardware, not just notebooks. "I build things that work, not slideware."
+
+---
+
+## Technical Skills
+
+### Programming Languages
+- C++ (Object-Oriented Programming, Data Structures & Algorithms)
+- Python (Machine Learning, Deep Learning, Scripting)
+- TypeScript & JavaScript (Full-Stack Web Development)
+
+### AI & Machine Learning
+- Machine Learning (scikit-learn, Pandas, NumPy, EDA)
+- Deep Learning (Neural Networks, PyTorch, Self-Attention Mechanisms)
+- Large Language Models & AI Agent Orchestration (LangChain, n8n, Prompt Engineering)
+- Model Explainability (SHAP, Feature Importance)
+
+### Data & Vector Databases
+- SQL / MySQL
+- Supabase (PostgreSQL)
+- Pinecone (Vector database for RAG pipelines)
+
+### Automation & Tools
+- Workflow Orchestration (n8n, Celery, Redis)
+- Git & GitHub
+- Linux (CLI, Scripting)
+- Google Cloud Console
+
+---
+
+## Education
+- **Abdul Wali Khan University, Mardan (Swat Campus)**
+  - BS Computer Science (Artificial Intelligence)
+  - Period: Expected graduation 2027
+  - GPA: 3.51 / 4.00
+- **Govt. PG Jehanzeb College, Saidu Sharif, Swat**
+  - Intermediate (FSc / ICS) | Period: 2021–2023 | Score: 865 / 1100
+- **Govt. Higher Secondary School Labat, Swat**
+  - Matriculation | Period: 2019–2021 | Score: 1052 / 1100
+
+---
+
+## Key Projects
+
+### 1. APDD (Autonomous Parcel Delivery Drone)
+- **Role/Type:** Robotics / Embedded Systems (Final-Year Project, 2026)
+- **Tagline:** GPS-guided quadcopter for autonomous last-mile delivery.
+- **Description:** A quadcopter built on the F450 frame with a Pixhawk 2.4.8 flight controller running ArduCopter firmware. Designed to navigate GPS waypoints autonomously and release parcels via a servo-actuated hook on arrival. Built using real hardware (not just simulations).
+- **Stack:** Pixhawk 2.4.8, ArduCopter, F450 Frame, 2212 920KV Motors, 4S LiPo, MG90S Servo
+
+### 2. Multi-Modal Cancer Omics Classifier
+- **Role/Type:** Machine Learning / Bioinformatics (2025)
+- **Tagline:** Multi-modal AI pipeline for cancer prediction. Perfect AUC. NeoHack 2025 winner.
+- **Description:** A machine learning pipeline fusing clinical, genomic, and transcriptomic data to predict cancer outcomes. Achieved a perfect AUC score on the evaluation set.
+- **GitHub:** https://github.com/ilyaskhan12Q/cancer-omics-classifier
+- **Stack:** Python, Jupyter, scikit-learn, Pandas
+
+### 3. PlanCraft AI
+- **Role/Type:** AI / Architecture & Design (2025)
+- **Tagline:** AI-generated home and architecture layouts, rendered in 2D/3D.
+- **Description:** An AI-powered architecture design platform that generates 2D and 3D home layouts from input parameters, paired with Blender-based rendering and a Flutter front end. Paired with Celery + Redis async render queues.
+- **Stack:** Flutter, FastAPI, Gemini 2.5 Flash, Celery, Redis, Blender 4.2
+
+### 4. SpreadsheetAppBuilder (SAB)
+- **Role/Type:** Developer Tooling / AI (2026, In Progress)
+- **Tagline:** Turns a text prompt into a working spreadsheet app.
+- **Description:** An open-source engine architecture that converts natural-language prompts into spreadsheet-based applications via a JSON blueprint pipeline. Decoupled AI generation layer from rendering. Adapters for LibreOffice (Python/UNO) and Excel (Office.js).
+- **Stack:** Python, UNO API, Office.js, JSON Blueprint Pipeline
+
+### 5. AJ Digital Support Agent
+- **Role/Type:** AI / Automation (2026)
+- **Tagline:** RAG-powered lead-gen support agent for a Mardan digital agency.
+- **Description:** An AI-powered customer support agent built for AJ Digital Agency (Mardan) using n8n for orchestration, Pinecone as the vector store, and Gemini embeddings for retrieval.
+- **Stack:** n8n, Pinecone, Gemini Embeddings
+
+### 6. DocSmith
+- **Role/Type:** AI / Document Automation (2025–2026)
+- **Tagline:** AI-driven document generation.
+- **Description:** A document automation project built as part of an AI/ML and full-stack engineering portfolio targeting bank and tech roles.
+- **Stack:** Python, AI/LLM tooling
+
+### 7. FlexStock
+- **Role/Type:** Full-Stack (2025–2026)
+- **Tagline:** Inventory / stock-management system.
+- **Description:** A full-stack product built and featured in the AI/ML and full-stack engineering resume targeting banks and tech companies.
+- **Stack:** Full-Stack
+
+### 8. LangChain AI Doctor
+- **Role/Type:** AI / Healthcare (2025)
+- **Tagline:** LangChain-based conversational health assistant.
+- **Description:** A LangChain-powered AI agent for medical Q&A and triage-style conversation.
+- **Stack:** LangChain, Python, LLM
+
+### 9. autoinsight-ai
+- **Role/Type:** Machine Learning / Automation (2025)
+- **Tagline:** Raw CSV in, ML insights out — automatically.
+- **Description:** Automatically turns a raw CSV into a full machine-learning analysis, including automated EDA, model training, SHAP explainability, and a Gemini-generated plain-language writeup of the results.
+- **GitHub:** https://github.com/ilyaskhan12Q/autoinsight-ai
+- **Stack:** Python, scikit-learn, SHAP, Gemini
+
+### 10. Boots & Co
+- **Role/Type:** Full-Stack E-Commerce (2025)
+- **Tagline:** A real e-commerce stack, end to end.
+- **Description:** A complete e-commerce platform with storefront, cart, and checkout flow.
+- **GitHub:** https://github.com/ilyaskhan12Q/Boots---Co-Full-Stack-E-Commerce-Website
+- **Stack:** TypeScript
+
+### 11. Escrow App
+- **Role/Type:** Full-Stack / FinTech (2025)
+- **Tagline:** Trust infrastructure for two-party transactions.
+- **Description:** An escrow application handling staged, conditional fund release between two parties.
+- **GitHub:** https://github.com/ilyaskhan12Q/escrow-app
+- **Stack:** TypeScript
+
+### 12. Transformers Self-Attention
+- **Role/Type:** Deep Learning (2025)
+- **Tagline:** Self-attention mechanics implemented from first principles.
+- **Description:** A from-scratch implementation of the self-attention mechanism underlying transformer architectures to build first-principles math understanding.
+- **GitHub:** https://github.com/ilyaskhan12Q/Transformers-self_attention
+- **Stack:** Python, Jupyter, NumPy
+
+### 13. QR Generator MVP
+- **Role/Type:** Tooling (2025)
+- **Tagline:** Fast, no-nonsense QR code generation.
+- **Description:** A minimal QR code generator tool, also produced as a full assignment deliverable (Word, PDF, and script) for AI coursework at AWKUM (6th semester).
+- **GitHub:** https://github.com/ilyaskhan12Q/QR-generator-mvp
+- **Stack:** JavaScript
+
+### 14. Hospital Automation System
+- **Role/Type:** AI / Automation (2025)
+- **Tagline:** Multi-agent system coordinating doctors, patients, and appointments.
+- **Description:** A multi-agent AI system built in n8n handling doctor, patient, appointment, and related service flows, with structured JSON outputs designed for direct database insertion.
+- **Stack:** n8n, JSON
+
+### 15. AI Job Search Automation Agent
+- **Role/Type:** AI / Automation (2025)
+- **Tagline:** Searches, filters, and tracks job opportunities automatically.
+- **Stack:** Automation, AI Agent
+
+### 16. Learning Management System
+- **Role/Type:** Systems / OOP (2024)
+- **Tagline:** Console-based LMS built on core OOP principles.
+- **Description:** A console-based Learning Management System implementing student, course, and record management modules using object-oriented design in C++.
+- **Stack:** C++, OOP
