@@ -97,25 +97,73 @@ export default function Home() {
 
   return (
     <div className="container home-page">
-      {/* ── Welcome and Status Banner ── */}
-      <section className="dashboard-hero">
-        <div className="hero-eyebrow mono">
-          <StatusBadge status="active" /> available for internships &amp; entry-level roles
+      {/* ── Hero: Profile Picture + Identity ── */}
+      <section className="hero-split">
+        <div className="hero-text">
+          <div className="hero-eyebrow mono">
+            <StatusBadge status="active" /> available for internships &amp; entry-level roles
+          </div>
+          <h1 className="hero-title">
+            {profile.name}
+            <span className="hero-cursor">_</span>
+          </h1>
+          <p className="hero-role mono">{profile.role}</p>
+          <p className="hero-tagline">{profile.tagline}</p>
+          <p className="hero-objective">{profile.objective}</p>
+          <div className="hero-actions">
+            <Link to="/projects" className="btn btn-primary mono">
+              <span>→</span> ls projects
+            </Link>
+            <Link to="/contact" className="btn btn-ghost mono">
+              <span>$</span> ping contact
+            </Link>
+          </div>
         </div>
-        <h1 className="hero-title">
-          {profile.name}
-          <span className="hero-cursor">_</span>
-        </h1>
-        <p className="hero-role mono">{profile.role}</p>
-        <p className="hero-tagline">{profile.tagline}</p>
+
+        <div className="hero-photo-wrapper">
+          <div className="hero-photo-terminal">
+            <div className="hero-photo-bar">
+              <div className="hero-terminal-dots">
+                <span className="nav-wb-dot nav-wb-dot--red" />
+                <span className="nav-wb-dot nav-wb-dot--amber" />
+                <span className="nav-wb-dot nav-wb-dot--green" />
+              </div>
+              <span className="mono hero-photo-title">profile_img.png — preview</span>
+            </div>
+            <div className="hero-photo-body">
+              {/* Replace src with your actual photo path, e.g. "/profile.jpg" */}
+              <img
+                src="/portfolio/profile.jpg"
+                alt="Ilyas Khan — AI/ML Engineer"
+                className="hero-photo-img"
+                onError={(e) => {
+                  // Fallback: show a styled placeholder if image not found
+                  e.target.style.display = 'none';
+                  e.target.parentElement.classList.add('hero-photo-placeholder-active');
+                }}
+              />
+              <div className="hero-photo-placeholder">
+                <div className="placeholder-ascii mono">
+                  <span className="placeholder-icon">👤</span>
+                  <span className="placeholder-text">awaiting upload...</span>
+                  <span className="placeholder-hint">place profile.jpg in /public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="hero-photo-meta mono">
+            <span>loc: {profile.location}</span>
+            <span>mail: {profile.email}</span>
+          </div>
+        </div>
       </section>
 
       {/* ── Central Dashboard Section (Neofetch, Binary Clock, Metrics) ── */}
       <section className="dashboard-grid">
-        <div className="dashboard-left">
+        <div className="dashboard-col dashboard-col--wide">
           <Neofetch repoCount={projects.length} />
         </div>
-        <div className="dashboard-right">
+        <div className="dashboard-col">
           <div className="dashboard-panel">
             <div className="panel-header mono">system_clock.exe</div>
             <div className="panel-body clock-panel-body">
