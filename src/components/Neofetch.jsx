@@ -17,13 +17,16 @@ export default function Neofetch({ repoCount = 0 }) {
     return () => clearInterval(timer);
   }, []);
 
-  const asciiLogo = `
-   ___ _
-  |_ _| |  _  _
-   | || |__| || |
-  |___|____|\\_, |
-            |__/
-  `;
+  // ASCII art: "Ilyas Khan" in a clean figlet-style font
+  const asciiLogo = String.raw`
+ ___ _                    _  ___
+|_ _| | _   _  __ _ ___  | |/ / |__   __ _ _ __
+ | || || | | |/ _' / __| |   /| '_ \ / _' | '_ \
+ | || || |_| | (_| \__ \ | . \| | | | (_| | | | |
+|___|_| \__, |\__,_|___/ |_|\_\_| |_|\__,_|_| |_|
+        |___/
+
+`.trim();
 
   return (
     <div className="neofetch mono" aria-label="System Info (neofetch)">

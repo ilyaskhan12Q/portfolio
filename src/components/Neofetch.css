@@ -1,20 +1,28 @@
 .neofetch {
   display: flex;
-  gap: 24px;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   padding: 16px;
   background: var(--bg-raised);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   max-width: 100%;
+  overflow: hidden;
 }
 
 .neofetch-logo {
   color: var(--accent);
   text-shadow: var(--glow-sm);
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.15;
   white-space: pre;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-dim) transparent;
+}
+
+.neofetch-logo pre {
+  margin: 0;
 }
 
 .neofetch-info {
@@ -57,12 +65,8 @@
 }
 
 @media (max-width: 600px) {
-  .neofetch {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
   .neofetch-logo {
-    font-size: 13px;
+    font-size: 10px;
   }
 }
+
