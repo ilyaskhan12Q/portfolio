@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemaps and AI specifications
+Sitemap: https://ilyaskhan12q.github.io/portfolio/sitemap.xml
+llms: https://ilyaskhan12q.github.io/portfolio/llms.txt
