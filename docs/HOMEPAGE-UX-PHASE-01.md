@@ -58,3 +58,149 @@ A line-by-line inspection of the active codebase (`src/pages/Home.jsx`, `src/pag
 - **Hackathon Victory**: Winning NeoHack 2025 with an end-to-end multi-omics AI platform is top 1% signal for an undergraduate. It is presented as a plain `1` in a generic counter card.
 - **Orphaned Capabilities**: `TerminalShell.jsx`—a pre-built interactive CLI capable of executing commands (`help`, `whoami`, `skills`, `status`, `ls projects`)—is completely dormant in the repository.
 - **Missing Proof of Systems Building**: Ilyas works across AI agents, LLM RAG pipelines, autonomous drone flight controllers (Pixhawk/ArduCopter), and genomics. None of these architecture diagrams or benchmark figures are surfaced on the homepage.
+
+---
+
+## 4. Recruiter & Engineering Lead User Journey
+
+To maximize conversion (invitations to interview, technical screening, research collaborations), the homepage must be engineered around the mental models of two primary technical personas:
+
+### Persona A: Technical Recruiter / Talent Sourcer
+* **Goal**: Rapidly qualify skills, candidate availability, location, domain competence, and resume match within 15 seconds.
+* **Scan Path**:
+  1. **Hero**: Role title (`AI/ML Engineer & Systems Builder`), current location (Swat, Pakistan / Open to Remote), core stack tags (`PyTorch`, `LangChain`, `Python`, `Supabase`).
+  2. **Call to Action**: Immediate, prominent buttons for `Download Resume` and `View GitHub / Email`.
+  3. **Credibility Validation**: Highlighted proof badges: `NeoHack 2025 Winner`, `3.51 CGPA (BS CS AI, AWKUM)`.
+
+### Persona B: Senior Engineering Lead / AI Hiring Manager
+* **Goal**: Validate engineering depth, architectural maturity, codebase quality, and problem-solving rigor within 60-90 seconds.
+* **Scan Path**:
+  1. **Flagship Work**: Dive into 3 curated, production-grade projects with verifiable technical depth (metrics, system architecture, live demo/repo).
+  2. **Technical Breadth**: Inspect production capabilities (agent orchestration, vector databases, embedded flight controllers, model inference).
+  3. **Interactive Telemetry / Terminal**: Engage with interactive command console (`TerminalShell`) or inspect `Neofetch` system telemetry to confirm an authentic systems engineer mindset.
+
+---
+
+## 5. New Homepage Information Architecture (IA) Blueprint
+
+The redesigned homepage transitions from a flat "dump everything" page into a structured, narrative-driven technical console.
+
+```mermaid
+graph TD
+    A[Global Nav: Command Prompt + Status + Quick Links] --> B[Hero: Value Proposition + Core Stack + Instant CTAs]
+    B --> C[Impact & Credibility Ticker: NeoHack Winner | 34+ Repos | 3.51 GPA]
+    C --> D[Flagship Systems Spotlight: 3 Deep-Dive Engineering Showcases]
+    D --> E[Technical Architecture Matrix: AI/ML | Systems/Robotics | Cloud/Data]
+    E --> F[Interactive Console: Embedded TerminalShell + System Telemetry]
+    F --> G[Academic & Research Foundation: BS CS AI, AWKUM + Certifications]
+    G --> H[Deployment Terminal / Contact CTA + Global Footer]
+```
+
+### Proposed Section Breakdown
+
+1. **Global Nav (`Nav.jsx`)**
+   - Retro command line header with real system latency, terminal prompt, and fixed high-priority CTA (`Resume`).
+2. **Hero Console (`HomeHero`)**
+   - High-impact terminal prompt, positioning statement, instant tech stack badges, portrait terminal frame, and dual CTAs (`Inspect Flagship Systems` / `Download Resume`).
+3. **Proof & Impact Bar (`ProofTicker`)**
+   - High-contrast telemetry bar spotlighting verifiable milestones: NeoHack 2025 Champion, 1.00 AUC Cancer Classifier, 34+ Public Repositories, 3.51 CGPA.
+4. **Flagship Engineering Showcase (`FlagshipSpotlight`)**
+   - Curated deep-dive into the top 3 high-signal systems:
+     - **Cancer Omics Classifier**: NeoHack 2025 winning multi-omics diagnostic platform (1.00 AUC, multi-agent pipeline).
+     - **AutoInsight AI / Plancraft AI**: Production-grade RAG and autonomous LLM agent workflow engine.
+     - **Robotics / Systems Flight Controller**: Hardware-in-the-loop autonomous UAV systems (Pixhawk / ArduCopter).
+5. **Technical Architecture & Capabilities Matrix (`CoreCompetencies`)**
+   - Structured terminal matrix categorizing applied engineering skills by domain: Machine Learning & Generative AI, Distributed & Backend Systems, Robotics & Embedded Control.
+6. **Interactive Telemetry & Terminal Shell (`InteractiveConsole`)**
+   - Seamlessly activates the dormant `TerminalShell.jsx` alongside `Neofetch.jsx`, providing tech leads with a fully functional CLI to query candidate metadata (`whoami`, `cat skills`, `git log`, `ssh contact`).
+7. **Academic & Research Foundation (`AcademicCredentials`)**
+   - BS in Computer Science (Artificial Intelligence) at Abdul Wali Khan University Mardan (AWKUM), expected graduation 2027, honors, and verified deep learning certifications.
+8. **Contact Terminal & Deployment Gateway (`ContactTerminal`)**
+   - High-conversion closing prompt inviting interview opportunities, remote roles, and research projects with one-click email copying and PGP/social verification.
+
+---
+
+## 6. Detailed Section-by-Section Specification
+
+### Section 1: Top Navigation Bar (`Nav.jsx`)
+* **Purpose**: Persistent site-wide orientation, route navigation, and instant access to recruiter collateral.
+* **Component Changes**:
+  - Re-sync `Nav.jsx` with `Nav.css` by fixing CSS class selectors (`.nav-titlebar`, `.nav-prompt-row`).
+  - Add quick action: Direct `Resume.pdf` action button on the far right.
+  - Active route highlighting using green monospace pill indicator.
+
+### Section 2: Hero Console
+* **Headline**: `Ilyas Khan`
+* **Subhead**: `AI/ML Engineer & Systems Builder`
+* **Tagline**: `Building high-throughput machine learning pipelines, autonomous multi-agent systems, and embedded flight computing.`
+* **Core Stack Chips (Immediately visible)**:
+  - `[PyTorch]` `[Python / C++]` `[LangChain / RAG]` `[Supabase / SQL]` `[Autonomous Systems]`
+* **Primary CTAs**:
+  - `[01] Explore Systems` (Smooth scroll to Flagship Projects)
+  - `[02] Download CV` (Opens `/resume.pdf`)
+  - `[03] Launch Terminal` (Jumps to interactive shell)
+
+### Section 3: Proof & Verification Bar
+* **Replaces**: Generic 4-box stat counter.
+* **Metrics**:
+  1. **Hackathon Champion**: `NeoHack 2025 1st Place` (Multi-omics cancer classification, 1.00 AUC).
+  2. **Codebase Activity**: `34+ Repositories` (Synchronized dynamically via GitHub GraphQL/REST API).
+  3. **Academic Excellence**: `3.51 CGPA` (BS Computer Science - AI Specialization, AWKUM '27).
+  4. **Production Architecture**: `Full-Stack AI` (RAG, Vector Databases, Autonomous Agents, Edge Control).
+
+### Section 4: Flagship Engineering Systems (Top 3 Only)
+* **Replaces**: 4-card generic project list.
+* **Layout**: Rich interactive cards featuring architecture diagrams, system inputs/outputs, model performance metrics, and direct live links:
+  1. **System 01: Multi-Omics Cancer Biomarker & Clinical Classifier**
+     - *Badge*: `[NEOHACK '25 WINNER] [1.00 AUC]`
+     - *Highlights*: XGBoost, Random Forest, PyTorch, Multi-omics genomic dataset integration, automated clinical explainability via SHAP.
+     - *Links*: `[GitHub Repo]` `[System Architecture]` `[Live Demo]`
+  2. **System 02: AutoInsight AI / Plancraft Multi-Agent Workflow Engine**
+     - *Badge*: `[LLM AGENTS] [PRODUCTION RAG]`
+     - *Highlights*: Orchestrated autonomous LLM agents using LangChain, Supabase vector storage, streaming inference, automated plan generation.
+     - *Links*: `[GitHub Repo]` `[Demo Video]`
+  3. **System 03: Autonomous UAV Flight Control & Robotics Telemetry**
+     - *Badge*: `[EMBEDDED HARDWARE] [ARDUCOPTER]`
+     - *Highlights*: Pixhawk firmware integration, C++ mission planning, autonomous waypoint navigation, fail-safe edge telemetry.
+     - *Links*: `[GitHub Repo]` `[Telemetry Logs]`
+
+### Section 5: Core Competencies & Architecture Matrix
+* **Layout**: 3-column terminal block grouped by technical domain rather than loose tags:
+  - **Column A (AI & Machine Learning)**: PyTorch, Scikit-learn, LangChain, RAG, Transformers, SHAP Explainability, Model Fine-Tuning.
+  - **Column B (Systems, Hardware & Robotics)**: C++, Python, Linux Kernel/SysAdmin, Pixhawk / ArduCopter, Hardware-in-the-Loop Testing.
+  - **Column C (Data, Cloud & Tooling)**: Supabase, PostgreSQL, Pinecone Vector DB, n8n Workflow Automation, Git, Docker, REST APIs.
+
+### Section 6: Interactive Terminal Console & Telemetry
+* **Activation**: Integrates the existing, unrendered `TerminalShell.jsx` directly into the page layout next to `Neofetch.jsx`.
+* **Utility**: Technical evaluators can click into the terminal and run real commands:
+  - `help`: List available commands.
+  - `cat about.txt`: Display bio and research focus.
+  - `top`: Display live mock system resources and memory stats.
+  - `open resume`: Open resume in new tab.
+  - `contact`: Print direct contact channels.
+
+### Section 7: Academic Foundation & Certifications
+* **Content**:
+  - **Degree**: Bachelor of Science in Computer Science (Specialization in Artificial Intelligence).
+  - **Institution**: Abdul Wali Khan University Mardan (AWKUM).
+  - **Graduation**: Expected 2027 | CGPA: 3.51.
+  - **Verified Credentials**: Coursera & SimpliLearn AI/ML Certifications.
+
+### Section 8: Final Deployment Gateway & Contact Terminal
+* **Prompt**: `ilyas@workstation:~$ ./contact.sh --hire`
+* **Features**: One-click email copy button (`ilyaskhan12q@gmail.com`), social verification badges (GitHub, LinkedIn, WhatsApp), and response SLA indicator (`Average response time: < 12 hours`).
+
+---
+
+## 7. Home vs. Projects: Boundary Definition
+
+A major flaw in the current architecture is the duplication of project listings. The new boundary is strictly defined:
+
+| Dimension | `Home` (`/`) | `Projects` (`/projects`) |
+|---|---|---|
+| **Primary Objective** | Qualification, conversion, high-level technical positioning. | Deep technical exploration, comprehensive archive search, filtering. |
+| **Project Quantity** | Exactly **3 flagship systems**. | **All 34+ repositories** (enriched + dynamically fetched from GitHub). |
+| **Detail Level** | High-level system architecture, business/clinical impact, top performance metrics (e.g. 1.00 AUC). | Full parameter breakdown, commit activity, language distributions, complete file structure. |
+| **Interaction** | Quick link to live system, code repo, or project case study. | Interactive search bar (`grep`), category filtering (`AI/ML`, `Agents`, `Robotics`, `Full-Stack`), tag toggles. |
+| **Component Used** | New `FlagshipSpotlight.jsx` card component. | Refactored `ProjectsTable` / card directory with live filtering. |
+
