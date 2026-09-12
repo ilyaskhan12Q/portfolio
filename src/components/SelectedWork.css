@@ -1,0 +1,256 @@
+.selected-work-section {
+  margin: 56px 0;
+}
+
+.flagship-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.flagship-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.flagship-card:hover {
+  border-color: rgba(0, 255, 102, 0.25);
+}
+
+.flagship-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.flagship-eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flagship-index {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.flagship-eyebrow {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.flagship-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flagship-status-label {
+  font-size: 11px;
+  color: var(--accent-dim);
+  letter-spacing: 0.04em;
+}
+
+.flagship-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+
+.flagship-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.flagship-desc-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flagship-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flagship-label {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+}
+
+.flagship-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.flagship-block--results {
+  background: rgba(0, 255, 102, 0.025);
+  border: 1px solid rgba(0, 255, 102, 0.12);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.flagship-results-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.flagship-results-list li {
+  margin-bottom: 6px;
+}
+
+.flagship-results-list li:last-child {
+  margin-bottom: 0;
+}
+
+.flagship-tech-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flagship-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.flagship-pill {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+.flagship-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.btn-sm {
+  font-size: 12px;
+  padding: 7px 14px;
+}
+
+/* ── Architecture Diagram Card ── */
+.flagship-diagram-col {
+  position: sticky;
+  top: 90px;
+}
+
+.diagram-card {
+  background: #080c0a;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.diagram-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-border);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.diagram-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
+}
+
+.diagram-body {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.diagram-code {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 0;
+  white-space: pre;
+}
+
+/* ── Bottom Callout ── */
+.more-projects-callout {
+  margin-top: 36px;
+  padding: 20px 24px;
+  background: rgba(17, 23, 20, 0.6);
+  border: 1px dashed var(--surface-border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.callout-prompt {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.callout-text {
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.callout-btn {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  transition: all 0.15s ease;
+}
+
+.callout-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+@media (max-width: 960px) {
+  .flagship-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .flagship-card {
+    padding: 20px;
+  }
+  
+  .flagship-diagram-col {
+    position: static;
+  }
+}
