@@ -204,3 +204,150 @@ A major flaw in the current architecture is the duplication of project listings.
 | **Interaction** | Quick link to live system, code repo, or project case study. | Interactive search bar (`grep`), category filtering (`AI/ML`, `Agents`, `Robotics`, `Full-Stack`), tag toggles. |
 | **Component Used** | New `FlagshipSpotlight.jsx` card component. | Refactored `ProjectsTable` / card directory with live filtering. |
 
+---
+
+## 8. Content Hierarchy & Recruiter Scanning Flow
+
+Recruiters follow an F-shaped or inverted pyramid scanning pattern. The content on the homepage is engineered to provide progressive disclosure of competence:
+
+```
+[0-5s]   WHO & WHAT: Ilyas Khan | AI/ML Engineer | Swat, Pakistan (Remote Ready)
+         STACK BADGES: PyTorch, LangChain, C++, Supabase
+         PRIMARY CTAs: [Download CV] [Inspect Flagship Systems]
+            │
+[5-15s]  PROOF VALIDATION: NeoHack '25 Winner (1.00 AUC) | 34+ Repos | 3.51 GPA
+            │
+[15-45s] FLAGSHIP DEEP-DIVES:
+         1. Cancer Multi-Omics Classifier (Clinical Diagnostic Engine)
+         2. AutoInsight AI / Plancraft (Autonomous Multi-Agent Systems)
+         3. Autonomous UAV Flight Control (Embedded Systems & Pixhawk)
+            │
+[45-75s] BREADTH & INTERACTION:
+         Domain Matrix: AI/ML, Embedded Systems, Cloud/Data
+         Interactive Console: Run `whoami`, `cat skills`, `top` in live terminal
+            │
+[75s+]   CONVERSION: Direct Contact Terminal + Response SLA (<12h)
+```
+
+---
+
+## 9. Proof & Impact Strategy
+
+Every technical claim on the homepage must link to verifiable code, evaluation metrics, or third-party validation:
+
+| Capability Claim | Verifiable Proof | Homepage Placement |
+|---|---|---|
+| **High-Precision ML & Oncology** | NeoHack 2025 First Place, 1.00 AUC, SHAP interpretability graphs, public GitHub repository. | Section 3 (Proof Bar) & Section 4 (Flagship Card 1). |
+| **Autonomous Multi-Agent AI** | Multi-step LangChain agent loops, vector retrieval benchmarks, streaming LLM outputs, clean system architecture diagram. | Section 4 (Flagship Card 2). |
+| **Robotics & Systems Engineering** | Embedded C++ firmware, hardware-in-the-loop Pixhawk/ArduCopter autopilot logs, real-time telemetry. | Section 4 (Flagship Card 3) & Section 5 (Matrix). |
+| **Academic Rigor** | 3.51 CGPA at AWKUM (BS CS Artificial Intelligence), Coursera Deep Learning Specialization credentials. | Section 3 (Proof Bar) & Section 7 (Academic Block). |
+
+---
+
+## 10. Visual Direction & Aesthetics
+
+### Core Philosophy: "Authentic Engineering Workstation, Not Cyberpunk Gimmick"
+The visual language must honor Unix terminal minimalism, high typography contrast, and high-density telemetry, while avoiding neon cyber-dystopian tropes.
+
+### Visual Design Tokens
+- **Background Foundation**: Deep console black (`#0a0e0c`) with subtle dark surface elevation (`#111714` / `#161e1a`).
+- **Primary Phosphor Accent**: Vivid monochrome terminal green (`#00ff66`), used strictly for focus states, command prompts, active links, and status indicators.
+- **Muted Structural Borders**: Subtle terminal border stroke (`rgba(0, 255, 102, 0.2)` to `rgba(255, 255, 255, 0.08)`).
+- **Secondary Accents**:
+  - Warning/Build: Phosphor Amber (`#ffb000`)
+  - Error/Interrupt: Retro CRT Red (`#ff3333`)
+  - Accent Telemetry: Cyan (`#00e5ff`)
+- **Typography Stack**:
+  - Code & Headings: `JetBrains Mono`, `monospace` (weight 400, 600)
+  - Longform Body Text: `Inter`, `system-ui` for superior legibility and recruiter eye-comfort
+
+---
+
+## 11. Image, Diagram & Visual Asset Strategy
+
+To anchor the technical achievements visually without slowing down page load speeds:
+1. **Interactive Architecture Diagrams**: SVG-based system topology for Flagship 1 (Multi-Omics) and Flagship 2 (Multi-Agent RAG), showing data ingestion, vector index, LLM reasoning, and validation output.
+2. **Terminal Scanline Profile Frame**: Preserve the existing `profile.jpg` inside `TerminalFrame.jsx` with subtle CRT scanline effect to maintain human connection.
+3. **Telemetry & Benchmark Sparklines**: Micro SVG sparklines illustrating model loss curves and AUC benchmarks.
+
+---
+
+## 12. Motion & Interaction Principles
+
+All animations must serve a UX purpose (orientation, feedback, status) rather than decoration:
+- **Instant Interactive Readiness**: Never block user interaction with arbitrary loading timers. The bootloader will be converted to an optional or non-blocking micro-toast rather than a full-page modal blocker.
+- **Tactile Monospace Feedback**: Command inputs in `TerminalShell` respond instantly (<16ms) with authentic monospace blinking cursors.
+- **Smooth Content Transitions**: Subtle CSS opacity and transform transitions (150ms ease-out) on interactive cards and tabs.
+- **Respect User Accessibility**: Respect `prefers-reduced-motion` across all CSS animations and CRT scanline shaders.
+
+---
+
+## 13. Responsive Strategy (Mobile, Tablet, Desktop)
+
+### Desktop (>= 1024px)
+- Multi-column telemetry view.
+- Side-by-side terminal frame in hero.
+- 2-column or 3-column architecture matrix.
+- Full interactive `TerminalShell` command prompt.
+
+### Tablet (768px - 1023px)
+- Stacks hero vertically: text value proposition first, profile frame below.
+- 2-column layout for flagship project showcases.
+- Scrollable interactive terminal with touch keyboard support.
+
+### Mobile (< 768px)
+- **Eliminate Horizontal Scroll Triggers**: Replace wide ASCII tables with responsive flex cards and tap-to-expand details.
+- **Touch-Optimized CTAs**: Sticky bottom or prominent thumb-friendly buttons for `[Download CV]` and `[Email]`.
+- **Streamlined Telemetry**: Condense `Neofetch` to essential lines (`OS`, `Kernel`, `Uptime`, `Focus Stack`).
+
+---
+
+## 14. What to Remove from Current Homepage
+
+To eliminate clutter and maximize recruiter signal density:
+1. **Full-Page Blocking `CliLoader`**: Convert from a blocking viewport gate into a lightweight hero prompt animation or non-blocking header telemetry ticker.
+2. **Duplicate ASCII Projects Table**: Remove `ls -la ~/projects` from the homepage entirely. Direct users interested in the full archive to the dedicated `/projects` route via a clean prompt.
+3. **Low-Signal `BinaryClock`**: Demote or relocate `BinaryClock.jsx` to an experimental toy tab or modal. Replace its desktop grid slot with the interactive `TerminalShell.jsx`.
+
+---
+
+## 15. What to Preserve & Elevate
+
+1. **Terminal Aesthetics & Monochrome Identity**: Keep the phosphor-green color tokens, JetBrains Mono typography, window title bars with control dots, and prompt formatting.
+2. **`Neofetch.jsx` System Telemetry**: Preserve this unique component as an authentic badge of Linux systems capability.
+3. **`TerminalShell.jsx` (Dormant Gem)**: Elevate from an unused file into an active centerpiece of the interactive experience.
+4. **Dynamic GitHub Sync**: Keep `useGitHubProjects` fetching live repository counts and activity to demonstrate continuous development.
+
+---
+
+## 16. Technical Bug Fixes Required for Phase 02
+
+Prior to or during Phase 02 implementation, the following existing bugs must be resolved:
+1. **`Nav.jsx` & `Nav.css` Synchronization**: Reconcile mismatched class names (`.nav-titlebar`, `.nav-prompt-row`, `.nav-wb-dots`) to restore intended navigation styling.
+2. **`StatusBadge.jsx` String Normalization**: Update status badge color logic to handle metadata strings like `[LIVE INFERENCE]`, `[ACTIVE RUNNING]`, `[SHIPPED]` without falling back to neutral gray.
+3. **CRT Overlay Integration**: Properly integrate or deprecate `CrtOverlay.jsx`.
+
+---
+
+## 17. Phase 02 & Phase 03 Implementation Roadmap
+
+### Phase 02: Core Homepage UI & Information Architecture Build
+- Refactor `Home.jsx` into modular section components (`HomeHero`, `ProofTicker`, `FlagshipSpotlight`, `CoreCompetencies`, `InteractiveConsole`, `ContactTerminal`).
+- Fix `Nav.css` and `StatusBadge.css` desync issues.
+- Connect `TerminalShell.jsx` to the homepage telemetry section with working commands.
+- Implement responsive styles eliminating mobile horizontal scroll.
+
+### Phase 03: Projects Page Optimization & Interactive Enhancements
+- Refactor `/projects` page to feature interactive search (`grep <query>`), category filter buttons, and detailed architecture popouts.
+- Add command auto-completion and sound toggles (optional retro key clicks) to `TerminalShell`.
+- Polish Lighthouse performance, CWV, accessibility (WCAG AA color contrast on phosphor green), and SEO meta tags.
+
+---
+
+## 18. Open Decisions for User Alignment
+
+1. **Upcoming Projects Scope (ZYRA, ZYR0 Research, SchoolOS)**: Confirm whether these upcoming ventures should be featured in the flagship spotlight or listed under an "Active Research & Early Access" subsection.
+2. **Interactive Terminal Prominence**: Confirm whether `TerminalShell` should be embedded directly on the homepage or toggled via an omnipresent floating terminal drawer/modal.
+3. **Bootloader Preference**: Confirm preference for complete removal of the 700ms boot sequence vs. transforming it into a non-blocking 300ms inline hero prompt typing effect.
+
+
