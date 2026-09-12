@@ -11,6 +11,89 @@
   min-height: 70vh;
 }
 
+/* ===== BACK NAVIGATION ===== */
+.detail-back-nav {
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  display: inline-block;
+  color: var(--text-dim);
+  font-size: 13px;
+  padding: 6px 12px;
+  border: 1px solid var(--surface-border);
+  background: var(--bg);
+  border-radius: var(--radius);
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  text-shadow: var(--glow-sm);
+}
+
+/* ===== PROJECT HEADER ===== */
+.detail-header {
+  margin-bottom: 28px;
+}
+
+.detail-header-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.detail-title {
+  font-family: var(--font-mono);
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.detail-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.detail-year {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.detail-tagline {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.detail-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 189, 46, 0.08);
+  border: 1px solid rgba(255, 189, 46, 0.25);
+  color: #ffbd2e;
+}
+
 /* ===== MOCK OS WINDOW ===== */
 .editor-window {
   border: 1px solid var(--surface-border);
@@ -69,30 +152,6 @@
   gap: 32px;
 }
 
-/* ===== BACK NAVIGATION ===== */
-.back-nav-block {
-  border-bottom: 1px dashed var(--surface-border);
-  padding-bottom: 16px;
-}
-
-.back-btn {
-  display: inline-block;
-  color: var(--text-dim);
-  font-size: 13px;
-  padding: 6px 12px;
-  border: 1px solid var(--surface-border);
-  background: var(--bg);
-  border-radius: var(--radius);
-  transition: all 0.15s ease;
-}
-
-.back-btn:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-wash);
-  text-shadow: var(--glow-sm);
-}
-
 /* ===== PRIMARY INFO MATRIX ===== */
 .info-matrix {
   display: grid;
@@ -143,10 +202,10 @@
 }
 
 .arch-header {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-dim);
   margin-bottom: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 0.02em;
 }
 
 .arch-ascii {
@@ -155,6 +214,45 @@
   font-size: 13px;
   line-height: 1.4;
   white-space: pre;
+}
+
+/* ===== HIGHLIGHTS ===== */
+.highlights-section {
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+}
+
+.highlights-header {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.highlight-item {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+
+.highlight-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent-dim);
 }
 
 /* ===== SYSTEM DOCUMENTATION CONTENT ===== */
@@ -187,7 +285,7 @@
   margin-bottom: 6px;
 }
 
-/* ===== ACTION BUTTONS NODE ===== */
+/* ===== ACTION BUTTONS ===== */
 .action-links-box {
   background: var(--bg);
   border: 1px solid var(--surface-border);
@@ -197,10 +295,10 @@
 }
 
 .action-header {
-  font-size: 11px;
-  color: var(--text-faint);
+  font-size: 12px;
+  color: var(--text-dim);
   margin-bottom: 14px;
-  letter-spacing: 1px;
+  letter-spacing: 0.02em;
 }
 
 .action-buttons {
@@ -213,14 +311,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 13px;
   padding: 10px 16px;
   background: var(--bg-raised);
   border: 1px solid var(--accent-dim);
   color: var(--accent);
   border-radius: var(--radius);
   transition: all 0.15s ease-in-out;
-  text-shadow: var(--glow-sm);
+  text-decoration: none;
 }
 
 .action-trigger-btn:hover {

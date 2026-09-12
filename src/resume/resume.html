@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ilyas Khan — AI/ML Engineer & Full-Stack Developer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a1a;
+    line-height: 1.45;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.45in 0.55in;
+  }
+
+  /* Header */
+  .header { margin-bottom: 18px; border-bottom: 2px solid #111; padding-bottom: 14px; }
+  .header h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.02em; color: #000; }
+  .header-sub { font-size: 11pt; color: #444; font-weight: 500; margin-top: 2px; }
+  .header-links {
+    display: flex; gap: 16px; margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: #555;
+  }
+  .header-links a { color: #1a6b3c; text-decoration: none; }
+
+  /* Section */
+  .section { margin-bottom: 16px; }
+  .section-title {
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #000; border-bottom: 1px solid #ccc;
+    padding-bottom: 3px; margin-bottom: 10px;
+  }
+
+  /* Profile */
+  .profile-text { font-size: 10pt; color: #333; line-height: 1.55; }
+
+  /* Skills Grid */
+  .skills-grid { display: grid; grid-template-columns: 110px 1fr; gap: 5px 12px; font-size: 9.5pt; }
+  .skill-cat { font-weight: 600; color: #222; padding: 2px 0; }
+  .skill-vals { color: #444; padding: 2px 0; }
+
+  /* Project Entry */
+  .proj { margin-bottom: 12px; }
+  .proj-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .proj-name { font-weight: 700; font-size: 10.5pt; color: #000; }
+  .proj-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 7.5pt;
+    padding: 1px 6px; border-radius: 3px; font-weight: 600;
+  }
+  .badge-winner { background: #fef3c7; color: #92400e; }
+  .badge-shipped { background: #d1fae5; color: #065f46; }
+  .badge-active { background: #dbeafe; color: #1e40af; }
+  .proj-sub { font-size: 9pt; color: #666; margin-top: 1px; }
+  .proj-sub span { font-family: 'JetBrains Mono', monospace; }
+  .proj-desc { font-size: 9.5pt; color: #333; margin-top: 4px; line-height: 1.5; }
+  .proj-stack {
+    font-family: 'JetBrains Mono', monospace; font-size: 8pt;
+    color: #1a6b3c; margin-top: 4px;
+  }
+  .proj-highlights { margin-top: 4px; padding-left: 14px; font-size: 9.5pt; color: #333; }
+  .proj-highlights li { margin-bottom: 2px; }
+
+  /* Education */
+  .edu { margin-bottom: 8px; }
+  .edu-top { display: flex; justify-content: space-between; align-items: baseline; }
+  .edu-degree { font-weight: 600; font-size: 10pt; color: #111; }
+  .edu-year { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: #666; }
+  .edu-school { font-size: 9.5pt; color: #444; }
+  .edu-detail { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: #1a6b3c; font-weight: 500; }
+
+  /* Certs */
+  .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+  .cert { font-size: 9.5pt; color: #333; padding: 2px 0; }
+  .cert-issuer { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #888; }
+
+  /* Additional NLP */
+  .nlp-line { font-size: 9.5pt; color: #333; margin-bottom: 4px; }
+  .nlp-line strong { color: #111; }
+
+  @media print {
+    body { font-size: 10pt; }
+    .page { padding: 0.35in 0.5in; }
+    a { color: #1a6b3c !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Ilyas Khan</h1>
+    <div class="header-sub">AI/ML Engineer · Full-Stack Developer · Embedded Systems</div>
+    <div class="header-links">
+      <span>ilyasdev67@gmail.com</span>
+      <a href="https://github.com/ilyaskhan12Q">github.com/ilyaskhan12Q</a>
+      <a href="https://linkedin.com/in/ilyas-khan67">linkedin.com/in/ilyas-khan67</a>
+      <a href="https://ilyaskhan12q.github.io/portfolio">ilyaskhan12q.github.io/portfolio</a>
+      <span>Swat, KP, Pakistan</span>
+    </div>
+  </div>
+
+  <!-- Profile -->
+  <div class="section">
+    <div class="section-title">Profile</div>
+    <p class="profile-text">
+      AI/ML engineer and full-stack developer with 34+ shipped projects spanning machine learning pipelines, NLP systems, autonomous embedded hardware, and production web applications. Built and deployed a multi-modal cancer classifier that achieved perfect AUC and won NeoHack 2025. Shipped a RAG-powered support agent for a real client. Implemented transformer self-attention from scratch, built Word2Vec and text-to-speech systems from first principles, and architected an open-source engine that converts natural language into working spreadsheet applications. Operates across the full stack — from Pixhawk flight controllers and servo actuators to FastAPI backends and React frontends.
+    </p>
+  </div>
+
+  <!-- Technical Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-cat">Languages</div>
+      <div class="skill-vals">Python, C++ (OOP, DSA), TypeScript, JavaScript, SQL</div>
+      <div class="skill-cat">AI / ML</div>
+      <div class="skill-vals">scikit-learn, Deep Learning, LangChain, SHAP / Explainability, Word2Vec, TF-IDF, NLP Pipelines</div>
+      <div class="skill-cat">NLP / Speech</div>
+      <div class="skill-vals">Text-to-Speech (TTS), Word Embeddings, Transformer Self-Attention, Tokenization, Sequence Models</div>
+      <div class="skill-cat">Full-Stack</div>
+      <div class="skill-vals">React, FastAPI, Flutter, Supabase, Celery, Redis, REST APIs</div>
+      <div class="skill-cat">Data / Vector</div>
+      <div class="skill-vals">MySQL, Supabase, Pinecone (vector store), Pandas, Jupyter, EDA</div>
+      <div class="skill-cat">Automation</div>
+      <div class="skill-vals">n8n, Gemini API, Claude API, Workflow Orchestration, RAG Pipelines</div>
+      <div class="skill-cat">Embedded</div>
+      <div class="skill-vals">Pixhawk / ArduCopter, GPS Waypoint Navigation, Servo Control, F450 Quadcopter</div>
+      <div class="skill-cat">Systems</div>
+      <div class="skill-vals">Linux, Git, GitHub, Docker, Google Cloud Console, Blender 4.2 (rendering)</div>
+    </div>
+  </div>
+
+  <!-- Selected Projects -->
+  <div class="section">
+    <div class="section-title">Selected Projects</div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">Multi-Modal Cancer Omics Classifier</span>
+        <span class="proj-badge badge-winner">🏆 NeoHack 2025 Winner</span>
+      </div>
+      <div class="proj-sub">Python · scikit-learn · Pandas · Jupyter <span>— 2025</span></div>
+      <div class="proj-desc">
+        Built a multi-modal ML pipeline fusing clinical, genomic, and transcriptomic data to predict cancer outcomes. Engineered feature extraction across three distinct data modalities, handled class imbalance, and tuned ensemble classifiers. Achieved a perfect AUC score on the evaluation set. Built under hackathon time constraints.
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">PlanCraft AI — Architecture Design Platform</span>
+        <span class="proj-badge badge-shipped">SHIPPED</span>
+      </div>
+      <div class="proj-sub">Flutter · FastAPI · Gemini 2.5 Flash · Celery · Redis · Blender 4.2 <span>— 2025</span></div>
+      <div class="proj-desc">
+        Designed and built an AI-powered architecture platform that generates 2D and 3D home layouts from natural-language input. Architected the backend with FastAPI and an async Celery + Redis task queue to handle Blender render jobs. Built the Flutter mobile frontend and produced a full marketing deck.
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">SpreadsheetAppBuilder (SAB)</span>
+        <span class="proj-badge badge-active">IN PROGRESS</span>
+      </div>
+      <div class="proj-sub">Python · UNO API · Office.js · JSON Blueprint Pipeline <span>— 2026</span></div>
+      <div class="proj-desc">
+        Architected an open-source engine that converts natural-language prompts into working spreadsheet applications. Designed a JSON blueprint pipeline that fully decouples the AI generation layer from the rendering layer. Ships with dual adapters: LibreOffice via Python/UNO and Excel via Office.js. Swap renderers without touching generation logic.
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">DocSmith — AI Document Automation</span>
+        <span class="proj-badge badge-shipped">SHIPPED</span>
+      </div>
+      <div class="proj-sub">Python · LLM Tooling · Prompt Engineering <span>— 2025–2026</span></div>
+      <div class="proj-desc">
+        Built an AI-driven document generation system that produces structured professional documents from templates and data inputs. Engineered prompt templates for deterministic output quality, debugged configuration-level compliance defects, and shipped a fully audited codebase with 11 bug fixes across prompt templates and core modules.
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">Autonomous Parcel Delivery Drone (APDD)</span>
+        <span class="proj-badge badge-active">CAPSTONE</span>
+      </div>
+      <div class="proj-sub">Pixhawk 2.4.8 · ArduCopter · F450 Frame · MG90S Servo <span>— 2026</span></div>
+      <div class="proj-desc">
+        Engineered a GPS-guided quadcopter for autonomous last-mile parcel delivery. Configured the Pixhawk 2.4.8 flight controller with ArduCopter firmware for waypoint navigation. Designed and integrated a servo-actuated parcel release mechanism. Authored a full technical research report. Built on real hardware — not simulation.
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header">
+        <span class="proj-name">AI Customer Support Agent — AJ Digital Agency</span>
+        <span class="proj-badge badge-shipped">CLIENT DEPLOYED</span>
+      </div>
+      <div class="proj-sub">n8n · Pinecone · Gemini Embeddings <span>— 2026</span></div>
+      <div class="proj-desc">
+        Built and deployed a RAG-powered customer support agent for a real client (AJ Digital Agency, Mardan). Debugged the full vector store ingestion pipeline end-to-end using Pinecone and Gemini embeddings. Tuned system prompts specifically for lead generation conversion. Shipped to production.
+      </div>
+    </div>
+  </div>
+
+  <!-- NLP & Deep Learning Work -->
+  <div class="section">
+    <div class="section-title">NLP & Deep Learning — From-Scratch Implementations</div>
+    <div class="nlp-line"><strong>Transformer Self-Attention:</strong> Implemented the complete self-attention mechanism from first principles using NumPy — query/key/value projections, scaled dot-product attention, and multi-head concatenation. Built to understand the math, not import the abstraction.</div>
+    <div class="nlp-line"><strong>Word2Vec Embeddings:</strong> Implemented Skip-gram and CBOW word embedding models from scratch. Trained on corpus data to produce dense vector representations capturing semantic relationships between words.</div>
+    <div class="nlp-line"><strong>Text-to-Speech (TTS):</strong> Built a text-to-speech pipeline covering text normalization, phoneme mapping, and audio waveform synthesis. Implemented signal processing fundamentals for speech generation.</div>
+    <div class="nlp-line"><strong>AutoInsight AI:</strong> Engineered an end-to-end automated ML pipeline — raw CSV input → EDA → model training → SHAP explainability → AI-generated plain-language writeup of results.</div>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu">
+      <div class="edu-top">
+        <span class="edu-degree">BS Computer Science (Artificial Intelligence)</span>
+        <span class="edu-year">Expected 2027</span>
+      </div>
+      <div class="edu-school">Abdul Wali Khan University, Mardan (Swat Campus)</div>
+      <div class="edu-detail">CGPA: 3.51 / 4.00</div>
+    </div>
+    <div class="edu">
+      <div class="edu-top">
+        <span class="edu-degree">Intermediate (FSc / ICS)</span>
+        <span class="edu-year">2021–2023</span>
+      </div>
+      <div class="edu-school">Govt. PG Jehanzeb College, Saidu Sharif, Swat</div>
+      <div class="edu-detail">865 / 1100</div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert">Deep Learning and Reinforcement Learning <span class="cert-issuer">— Coursera</span></div>
+      <div class="cert">Machine Learning using Python <span class="cert-issuer">— Coursera</span></div>
+      <div class="cert">Exploratory Data Analysis for Machine Learning <span class="cert-issuer">— Coursera</span></div>
+      <div class="cert">Introduction to Databases <span class="cert-issuer">— Coursera</span></div>
+      <div class="cert">Advanced C++ <span class="cert-issuer">— SimpliLearn</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

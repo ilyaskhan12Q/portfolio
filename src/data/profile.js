@@ -67,8 +67,8 @@ export const certifications = [
 ];
 
 export const stats = [
-  { label: 'public repos', value: '34+' },
-  { label: 'hackathon wins', value: '1' },
-  { label: 'cgpa', value: '3.51' },
-  { label: 'grad year', value: '2027' },
+  { label: 'public repos', displayLabel: 'GitHub Projects', value: '34+' },
+  { label: 'hackathon wins', displayLabel: 'Hackathon Wins', value: '1' },
+  { label: 'cgpa', displayLabel: 'GPA (out of 4.0)', value: '3.51' },
+  { label: 'grad year', displayLabel: 'Graduating', value: '2027' },
 ];

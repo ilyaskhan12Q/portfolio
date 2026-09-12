@@ -3,11 +3,13 @@ import BinaryClock from './BinaryClock';
 import './Nav.css';
 
 const links = [
-  { to: '/',         label: 'home',     cmd: '~'    },
-  { to: '/projects', label: 'projects', cmd: 'ls'   },
-  { to: '/about',    label: 'about',    cmd: 'man'  },
-  { to: '/contact',  label: 'contact',  cmd: 'ping' },
+  { to: '/',         label: 'Home',     cmd: '~'    },
+  { to: '/projects', label: 'Projects', cmd: 'ls'   },
+  { to: '/about',    label: 'About',    cmd: 'man'  },
+  { to: '/contact',  label: 'Contact',  cmd: 'ping' },
 ];
+
+const resumeUrl = '/portfolio/resume.pdf';
 
 /** Maps route → shell path shown in the titlebar prompt */
 function toShellPath(pathname) {
@@ -66,6 +68,9 @@ export default function Nav() {
                 {l.label}
               </NavLink>
             ))}
+            <a href={resumeUrl} target="_blank" rel="noreferrer" className="nav-link nav-resume-link">
+              Resume
+            </a>
           </nav>
         </div>
       </div>

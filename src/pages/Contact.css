@@ -3,9 +3,55 @@
 }
 
 .contact-head {
+  margin-bottom: 32px;
+}
+
+/* ===== QUICK CONNECT BUTTONS ===== */
+.quick-connect {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-bottom: 40px;
 }
 
+.quick-connect-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.quick-connect-btn:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+}
+
+.quick-connect-btn svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.quick-connect-btn span:nth-child(2) {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.quick-connect-detail {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ===== CONTACT GRID ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -42,6 +88,12 @@
   letter-spacing: 0.05em;
 }
 
+.contact-value-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .contact-value {
   font-size: 14px;
   color: var(--text);
@@ -56,6 +108,25 @@
   color: var(--text-dim);
 }
 
+/* ===== COPY BUTTON ===== */
+.copy-btn {
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 1px solid var(--surface-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* ===== CONTACT FORM ===== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -107,6 +178,23 @@
   color: var(--accent);
 }
 
+.contact-fallback {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 8px;
+}
+
+.contact-fallback a {
+  color: var(--accent-dim);
+  text-decoration: underline;
+}
+
+.contact-fallback a:hover {
+  color: var(--accent);
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 760px) {
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .quick-connect { grid-template-columns: 1fr; }
 }

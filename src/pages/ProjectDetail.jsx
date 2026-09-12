@@ -1,7 +1,20 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { useGitHubProjects } from '../hooks/useGitHubProjects';
 import CliLoader from '../components/CliLoader';
+import StatusBadge from '../components/StatusBadge';
 import './ProjectDetail.css';
+
+/** Extract notable achievement badges from highlights */
+function getAchievementBadges(highlights) {
+  if (!highlights || highlights.length === 0) return [];
+  const badges = [];
+  const joined = highlights.join(' ').toLowerCase();
+  if (joined.includes('winner') || joined.includes('won')) badges.push({ icon: '🏆', text: 'Award Winner' });
+  if (joined.includes('real client') || joined.includes('deployed for')) badges.push({ icon: '🚀', text: 'Deployed for Client' });
+  if (joined.includes('final-year') || joined.includes('final year')) badges.push({ icon: '🎓', text: 'Capstone Project' });
+  if (joined.includes('open-source') || joined.includes('open source')) badges.push({ icon: '📦', text: 'Open Source' });
+  return badges;
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -13,7 +26,7 @@ export default function ProjectDetail() {
   if (loading) {
     return (
       <div className="container detail-page-loading">
-        <CliLoader message={`Accessing database node: projects/${slug || 'sys'}...`} />
+        <CliLoader message={`Loading project: ${slug || '...'}...`} />
       </div>
     );
   }
@@ -21,6 +34,8 @@ export default function ProjectDetail() {
   if (error || !project) {
     return <Navigate to="/" replace />;
   }
+
+  const badges = getAchievementBadges(project.highlights);
 
   // Helper to parse markdown-like lines for terminal theme highlighting
   const renderSpecSheetContent = (text) => {
@@ -70,7 +85,37 @@ export default function ProjectDetail() {
 
   return (
     <div className="container detail-page">
-      {/* ── Mock OS Terminal Window Frame ── */}
+      {/* ── Back navigation ── */}
+      <div className="detail-back-nav">
+        <Link to="/projects" className="back-btn mono">
+          ← Back to Projects
+        </Link>
+      </div>
+
+      {/* ── Project Header ── */}
+      <header className="detail-header">
+        <div className="detail-header-top">
+          <h1 className="detail-title">{project.fullName || project.name}</h1>
+          <div className="detail-header-meta">
+            <StatusBadge status={project.status} />
+            <span className="detail-year mono">{project.year}</span>
+          </div>
+        </div>
+        {project.tagline && (
+          <p className="detail-tagline">{project.tagline}</p>
+        )}
+        {badges.length > 0 && (
+          <div className="detail-badges">
+            {badges.map((b) => (
+              <span className="detail-badge mono" key={b.text}>
+                {b.icon} {b.text}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* ── Terminal Window Frame ── */}
       <div className="editor-window">
         {/* Title bar */}
         <div className="editor-titlebar">
@@ -80,84 +125,95 @@ export default function ProjectDetail() {
             <span className="editor-dot editor-dot--green" />
           </div>
           <span className="editor-title mono">
-            file_view: ilyas@portfolio:~/projects/{project.name}/spec_sheet.log
+            ~/projects/{project.name}/spec_sheet.log
           </span>
         </div>
 
         {/* Window Body */}
         <div className="editor-body">
-          {/* Back button */}
-          <div className="back-nav-block">
-            <Link to="/" className="back-btn mono">
-              [ ◄ ESCAPE: RETURN TO SYSTEM ROOT ]
-            </Link>
-          </div>
-
-          {/* Primary Info Matrix Block */}
+          {/* Info Grid */}
           <div className="info-matrix mono">
             <div className="matrix-row">
-              <span className="matrix-label">NODE_NAME:</span>
+              <span className="matrix-label">Project:</span>
               <span className="matrix-value text-accent">{project.name}</span>
             </div>
             <div className="matrix-row">
-              <span className="matrix-label">SYS_STATUS:</span>
+              <span className="matrix-label">Status:</span>
               <span className="matrix-value text-amber">{project.status}</span>
             </div>
             <div className="matrix-row">
-              <span className="matrix-label">METRICS:</span>
-              <span className="matrix-value text-accent">{project.metrics || 'STABLE'}</span>
+              <span className="matrix-label">Performance:</span>
+              <span className="matrix-value text-accent">{project.metrics || 'Stable'}</span>
             </div>
             <div className="matrix-row">
-              <span className="matrix-label">STARS:</span>
+              <span className="matrix-label">Stars:</span>
               <span className="matrix-value">{project.stargazers_count} ★</span>
             </div>
             <div className="matrix-row">
-              <span className="matrix-label">CORE_STACK:</span>
+              <span className="matrix-label">Tech Stack:</span>
               <span className="matrix-value">{project.stack.join(', ')}</span>
             </div>
             <div className="matrix-row">
-              <span className="matrix-label">LAST_UPDATE:</span>
+              <span className="matrix-label">Last Updated:</span>
               <span className="matrix-value">
-                {project.updated_at ? new Date(project.updated_at).toISOString() : 'OFFLINE'}
+                {project.updated_at ? new Date(project.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A'}
               </span>
             </div>
           </div>
 
           {/* Architecture Section */}
-          <div className="arch-section">
-            <div className="arch-header mono">[ SYSTEM FLOW ARCHITECTURE ]</div>
-            <div className="overflow-x-auto">
-              <pre className="arch-ascii mono">{project.architecture}</pre>
+          {project.architecture && (
+            <div className="arch-section">
+              <div className="arch-header mono">System Architecture</div>
+              <div className="overflow-x-auto">
+                <pre className="arch-ascii mono">{project.architecture}</pre>
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Highlights */}
+          {project.highlights && project.highlights.length > 0 && (
+            <div className="highlights-section">
+              <div className="highlights-header mono">Key Highlights</div>
+              <ul className="highlights-list">
+                {project.highlights.map((h, i) => (
+                  <li key={i} className="highlight-item">{h}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* System Documentation Content Block */}
-          <div className="spec-sheet-content">
-            {renderSpecSheetContent(project.longFormMarkdown)}
-          </div>
-
-          {/* Action Links Node */}
-          <div className="action-links-box">
-            <div className="action-header mono">EXECUTE EXTERNAL TRIGGERS:</div>
-            <div className="action-buttons mono">
-              {project.links.map((link) => {
-                const labelText = link.label === 'live' 
-                  ? 'RUN: LAUNCH_LIVE_DEMO_INSTANCE' 
-                  : 'SUDO: INS_SOURCE_CODE_REPOS';
-                return (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="action-trigger-btn"
-                  >
-                    [{labelText}] <span className="arrow">↗</span>
-                  </a>
-                );
-              })}
+          {project.longFormMarkdown && (
+            <div className="spec-sheet-content">
+              {renderSpecSheetContent(project.longFormMarkdown)}
             </div>
-          </div>
+          )}
+
+          {/* Action Links */}
+          {project.links && project.links.length > 0 && (
+            <div className="action-links-box">
+              <div className="action-header mono">Links</div>
+              <div className="action-buttons mono">
+                {project.links.map((link) => {
+                  const labelText = link.label === 'live' 
+                    ? 'View Live Demo' 
+                    : 'View Source Code';
+                  return (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="action-trigger-btn"
+                    >
+                      {labelText} <span className="arrow">↗</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

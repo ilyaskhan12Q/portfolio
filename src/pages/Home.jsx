@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useGitHubProjects } from '../hooks/useGitHubProjects';
 import { stats, profile } from '../data/profile';
@@ -10,14 +10,14 @@ import './Home.css';
 
 const BOOT_LINES = [
   { text: 'booting ilyaskhan.sys ...', delay: 0 },
-  { text: 'loading modules: ai_ml, full-stack, automation, embedded', delay: 300 },
-  { text: 'fetching real-time GitHub telemetry mapping payload...', delay: 600 },
-  { text: 'mounting /education ... AWKUM — BS CS (AI), CGPA 3.51', delay: 900 },
-  { text: 'system check: OK', delay: 1200 },
-  { text: 'status: READY', delay: 1400 },
+  { text: 'loading modules: ai_ml, full-stack, automation, embedded', delay: 150 },
+  { text: 'fetching real-time GitHub telemetry...', delay: 300 },
+  { text: 'mounting /education ... AWKUM — BS CS (AI), CGPA 3.51', delay: 450 },
+  { text: 'system check: OK', delay: 600 },
+  { text: 'status: READY', delay: 700 },
 ];
 
-function BootSequence({ onComplete }) {
+function BootSequence({ onComplete, onSkip }) {
   const [visible, setVisible] = useState(0);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function BootSequence({ onComplete }) {
       setTimeout(() => {
         setVisible(i + 1);
         if (i === BOOT_LINES.length - 1) {
-          setTimeout(onComplete, 500); // Trigger complete 500ms after last line
+          setTimeout(onComplete, 300);
         }
       }, line.delay)
     );
@@ -39,14 +39,40 @@ function BootSequence({ onComplete }) {
           <span className="boot-prompt">$</span> {line.text}
         </div>
       ))}
+      <button className="boot-skip-btn mono" onClick={onSkip}>
+        [ skip → ]
+      </button>
     </div>
   );
 }
 
+/** Highlight badges for projects with notable achievements */
+function getAchievementBadge(project) {
+  const hl = (project.highlights || []).join(' ').toLowerCase();
+  if (hl.includes('winner') || hl.includes('won')) return '🏆 Winner';
+  if (hl.includes('real client') || hl.includes('deployed')) return '🚀 Deployed';
+  if (hl.includes('final-year') || hl.includes('final year')) return '🎓 Capstone';
+  return null;
+}
+
 export default function Home() {
   const { projects, loading, error } = useGitHubProjects();
-  const [bootCompleted, setBootCompleted] = useState(false);
   const [filter, setFilter] = useState('all');
+
+  // Boot sequence: skip if already seen this session
+  const alreadySeen = typeof window !== 'undefined' && sessionStorage.getItem('boot_seen') === '1';
+  const [bootCompleted, setBootCompleted] = useState(alreadySeen);
+
+  const handleBootComplete = useCallback(() => {
+    sessionStorage.setItem('boot_seen', '1');
+    setBootCompleted(true);
+  }, []);
+
+  // Featured projects for the card grid
+  const featuredProjects = useMemo(() => {
+    if (!projects) return [];
+    return projects.filter((p) => p.featured);
+  }, [projects]);
 
   // Categories list derived dynamically from project categories
   const categories = useMemo(() => {
@@ -88,7 +114,7 @@ export default function Home() {
             <span className="mono hero-terminal-title">boot_sequence.log</span>
           </div>
           <div className="hero-terminal-body" style={{ minHeight: '260px' }}>
-            <BootSequence onComplete={() => setBootCompleted(true)} />
+            <BootSequence onComplete={handleBootComplete} onSkip={handleBootComplete} />
           </div>
         </div>
       </div>
@@ -107,15 +133,20 @@ export default function Home() {
             {profile.name}
             <span className="hero-cursor">_</span>
           </h1>
-          <p className="hero-role mono">{profile.role}</p>
+          <p className="hero-subtitle mono">
+            {profile.role} · {profile.location} · Graduating 2027
+          </p>
           <p className="hero-tagline">{profile.tagline}</p>
           <p className="hero-objective">{profile.objective}</p>
           <div className="hero-actions">
-            <Link to="/projects" className="btn btn-primary mono">
-              <span>→</span> ls projects
+            <a href="/portfolio/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary mono">
+              <span>↓</span> Download Resume
+            </a>
+            <Link to="/projects" className="btn btn-secondary mono">
+              <span>→</span> View Projects
             </Link>
             <Link to="/contact" className="btn btn-ghost mono">
-              <span>$</span> ping contact
+              <span>$</span> Contact Me
             </Link>
           </div>
         </div>
@@ -158,7 +189,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Central Dashboard Section (Neofetch, Binary Clock, Metrics) ── */}
+      {/* ── Stats Bar — Key Metrics First ── */}
+      <section className="stats-bar">
+        <div className="stats-bar-grid">
+          {stats.map((s) => (
+            <div className="stats-bar-card" key={s.label}>
+              <div className="stats-bar-value mono">
+                {s.label === 'public repos' ? `${projects.length}+` : s.value}
+              </div>
+              <div className="stats-bar-label mono">{s.displayLabel || s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Featured Projects Cards ── */}
+      <section className="featured-projects-section">
+        <div className="section-head">
+          <h2 className="section-title mono">
+            <span className="section-id">featured</span> Projects
+          </h2>
+          <Link to="/projects" className="view-all-link mono">View All →</Link>
+        </div>
+
+        {loading ? (
+          <CliLoader />
+        ) : error ? (
+          <div className="mono error-box">
+            [ ! ] Failed to load projects. Please try refreshing.
+          </div>
+        ) : (
+          <div className="project-cards-grid">
+            {featuredProjects.map((p) => {
+              const badge = getAchievementBadge(p);
+              return (
+                <Link to={`/projects/${p.slug}`} key={p.slug} className="project-card">
+                  <div className="project-card-bar">
+                    <div className="project-card-dots">
+                      <span className="card-dot card-dot--red" />
+                      <span className="card-dot card-dot--amber" />
+                      <span className="card-dot card-dot--green" />
+                    </div>
+                    <span className="project-card-title mono">{p.name}</span>
+                    <span className="project-card-year mono">{p.year}</span>
+                  </div>
+                  <div className="project-card-body">
+                    {badge && <span className="project-badge mono">{badge}</span>}
+                    <p className="project-card-tagline">{p.tagline}</p>
+                    <div className="project-card-meta">
+                      <StatusBadge status={p.status} />
+                      <div className="project-card-stack">
+                        {p.stack.slice(0, 3).map((t) => (
+                          <span className="stack-pill mono" key={t}>{t}</span>
+                        ))}
+                        {p.stack.length > 3 && (
+                          <span className="stack-pill stack-pill--more mono">+{p.stack.length - 3}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {/* ── Central Dashboard Section (Neofetch, Binary Clock) ── */}
       <section className="dashboard-grid">
         <div className="dashboard-col dashboard-col--wide">
           <Neofetch repoCount={projects.length} />
@@ -170,32 +267,17 @@ export default function Home() {
               <BinaryClock />
             </div>
           </div>
-          <div className="dashboard-panel">
-            <div className="panel-header mono">metrics_telemetry.log</div>
-            <div className="panel-body metrics-panel-body">
-              <div className="stats-inner-grid">
-                {stats.map((s) => (
-                  <div className="stat-card" key={s.label}>
-                    <div className="stat-card-value mono">
-                      {s.label === 'public repos' ? `${projects.length}+` : s.value}
-                    </div>
-                    <div className="stat-card-label mono">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* ── Interactive ANSI Directory Grid (Dynamic Projects List) ── */}
+      {/* ── Full Directory Grid (ASCII Table — for dev visitors) ── */}
       <section className="projects-terminal-section">
         <div className="section-head">
           <h2 className="section-title mono">
             <span className="section-id">ls -la</span> ~/projects
           </h2>
           <div className="mono text-dim font-sm">
-            {projects.length} nodes registered. Click row to run cat command.
+            {projects.length} nodes registered. Click row to view details.
           </div>
         </div>
 
