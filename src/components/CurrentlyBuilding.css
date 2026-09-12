@@ -1,0 +1,71 @@
+.current-section {
+  margin: 56px 0;
+}
+
+.current-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.current-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.current-card:hover {
+  border-color: rgba(0, 255, 102, 0.25);
+}
+
+.current-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.current-cat {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+
+.current-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.current-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.current-stack {
+  font-size: 11px;
+  color: var(--text);
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stack-label {
+  color: var(--text-faint);
+  margin-right: 4px;
+}
+
+@media (max-width: 900px) {
+  .current-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,71 @@
+.approach-section {
+  margin: 56px 0;
+}
+
+.approach-flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.approach-step {
+  background: var(--bg-raised);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.approach-step:hover {
+  border-color: rgba(0, 255, 102, 0.3);
+}
+
+.approach-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step-phase {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.step-index {
+  font-size: 10px;
+  color: var(--text-faint);
+}
+
+.step-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .approach-flow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .approach-flow {
+    grid-template-columns: 1fr;
+  }
+}
