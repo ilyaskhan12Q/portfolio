@@ -15,7 +15,7 @@ const STATUS_MAP = {
 export default function StatusBadge({ status }) {
   const normalized = String(status || '')
     .toLowerCase()
-    .replace(/[\[\]]/g, '')
+    .replace(/[[\]]/g, '')
     .trim();
   const cfg = STATUS_MAP[normalized] || STATUS_MAP.shipped;
   return (
