@@ -6,71 +6,86 @@ const FLAGSHIP_SYSTEMS = [
   {
     slug: 'cancer-omics-classifier',
     name: 'Multi-Modal Cancer Omics Classifier',
-    eyebrow: 'BIOINFORMATICS & PRECISION ONCOLOGY',
+    category: 'BIOINFORMATICS · ONCOLOGY AI',
     status: 'active',
-    statusLabel: '[NEOHACK \'25 WINNER · 1.00 AUC]',
+    statusLabel: 'NEOHACK \'25 WINNER · 1.00 AUC',
+    highlightMetric: '1.00 AUC',
+    highlightDesc: 'Benchmark evaluation on multi-modal clinical validation set',
     problem:
-      'High-dimensional multi-omics datasets (genomics, transcriptomics, clinical) present extreme curse-of-dimensionality (20k+ features) and feature noise, obscuring patient outcome predictions.',
+      'High-dimensional omics data (genomics, transcriptomics, clinical) present severe curse-of-dimensionality (20k+ features) and sensor noise, obscuring patient outcome predictions.',
     solution:
-      'Engineered an end-to-end multi-modal data fusion pipeline combining clinical tabular metadata with genomic expression matrices. Applied custom VarianceThreshold and SelectKBest reduction down to 150 high-signal markers.',
-    results: [
-      'Achieved 1.00 AUC on the evaluation benchmark using an ensemble of XGBoost and Random Forest classifiers.',
+      'Engineered an end-to-end multi-modal data fusion pipeline combining clinical tabular metadata with genomic expression matrices. Applied custom VarianceThreshold and SelectKBest reduction down to 150 high-signal biological markers.',
+    keyOutcomes: [
       'Awarded 1st Place at NeoHack 2025.',
-      'Integrated SHAP (Shapley Additive Explanations) for clinical interpretability and biological feature validation.',
+      'Achieved 1.00 AUC using an ensemble of XGBoost and Random Forest.',
+      'Integrated SHAP values for clinical interpretability and feature importance.',
     ],
     stack: ['Python', 'scikit-learn', 'XGBoost', 'SHAP', 'Pandas', 'Jupyter'],
-    architecture: `[Genomic Variants]    ──┐
-[Transcriptomic Seq]  ─┼─► [Feature Reduction (150)] ──► [Multi-Modal Fusion] ──► [XGBoost/RF Ensemble] ──► [1.00 AUC Output]
-[Clinical Tabular]    ──┘`,
+    topologySteps: [
+      { label: 'Ingestion', text: 'Genomic, transcriptomic, and clinical cohorts' },
+      { label: 'Reduction', text: 'SelectKBest & VarianceThreshold down to 150 markers' },
+      { label: 'Fusion & Model', text: 'Multi-modal feature fusion into XGBoost / RF ensemble' },
+      { label: 'Explainability', text: 'SHAP summary plots for clinical verification' },
+    ],
     links: [
-      { label: 'GitHub Repo', url: 'https://github.com/ilyaskhan12Q/cancer-omics-classifier' },
-      { label: 'System Spec', url: '/projects/cancer-omics-classifier', internal: true },
+      { label: 'GitHub Repository', url: 'https://github.com/ilyaskhan12Q/cancer-omics-classifier', isExternal: true },
+      { label: 'Full Case Study', url: '/projects/cancer-omics-classifier', isExternal: false },
     ],
   },
   {
     slug: 'apdd',
     name: 'Autonomous Parcel Delivery Drone (APDD)',
-    eyebrow: 'ROBOTICS & EMBEDDED FLIGHT CONTROL',
+    category: 'ROBOTICS · EMBEDDED FLIGHT SYSTEMS',
     status: 'active',
-    statusLabel: '[CAPSTONE PROJECT · HARDWARE]',
+    statusLabel: 'CAPSTONE PROJECT · HARDWARE',
+    highlightMetric: 'F450 UAV',
+    highlightDesc: 'Pixhawk 2.4.8 autopilot with GPS autonomous waypoint navigation',
     problem:
-      'Simulated drone delivery ignores physical edge challenges: real-time telemetry drops, GPS coordinate drift, and hardware-actuated payload release under strict battery load constraints.',
+      'Simulated drone delivery ignores physical edge realities: RF telemetry dropouts, wind-induced GPS coordinate drift, and hardware-actuated payload release under strict battery draw.',
     solution:
-      'Built and programmed a physical F450 quadcopter powered by a Pixhawk 2.4.8 flight controller running ArduCopter firmware. Implemented GPS waypoint mission plans and configured servo-driven release mechanics.',
-    results: [
-      'Engineered around real flight-controller hardware with fail-safe return-to-launch (RTL) telemetry.',
-      'Servo-actuated parcel deployment mechanism (MG90S) wired to auxiliary flight controller channels.',
-      'Authored comprehensive engineering research report and system architecture.',
+      'Built and programmed a physical F450 quadcopter powered by a Pixhawk 2.4.8 flight controller running ArduCopter firmware. Configured autonomous waypoint mission plans and servo-driven release mechanics.',
+    keyOutcomes: [
+      'Built around real flight-controller hardware with fail-safe RTL telemetry.',
+      'Servo-actuated parcel deployment mechanism (MG90S) on aux flight channels.',
+      'Authored engineering research paper and flight architecture for May 2026 capstone.',
     ],
     stack: ['Pixhawk 2.4.8', 'ArduCopter Firmware', 'C++', 'GPS Navigation', 'F450 Airframe', 'Servo Control'],
-    architecture: `[Mission Planner GPS] ──► [Telemetry 433MHz] ──► [Pixhawk 2.4.8 Controller] ──► [Motor ESCs 920KV]
-                                                   │
-                                                   └──► [Servo Release (MG90S)] ──► [Drop Verified]`,
+    topologySteps: [
+      { label: 'Ground Station', text: 'Mission Planner GPS coordinate waypoint mapping' },
+      { label: 'Telemetry Link', text: '433MHz full-duplex telemetry with fail-safe return' },
+      { label: 'Autopilot Control', text: 'Pixhawk 2.4.8 running ArduCopter firmware' },
+      { label: 'Edge Actuation', text: 'MG90S servo release trigger upon waypoint lock' },
+    ],
     links: [
-      { label: 'Project Details', url: '/projects/apdd', internal: true },
+      { label: 'System Specifications', url: '/projects/apdd', isExternal: false },
     ],
   },
   {
     slug: 'aj-digital-support-agent',
-    name: 'AJ Digital AI Customer Support & Lead Gen Agent',
-    eyebrow: 'AGENTIC AI & RAG ORCHESTRATION',
+    name: 'AI Customer Support & Lead Generation Agent',
+    category: 'AGENTIC AI · RAG ORCHESTRATION',
     status: 'shipped',
-    statusLabel: '[DEPLOYED CLIENT SYSTEM]',
+    statusLabel: 'SHIPPED CLIENT SYSTEM',
+    highlightMetric: 'Production RAG',
+    highlightDesc: 'Orchestrated for AJ Digital Agency (Mardan, Pakistan)',
     problem:
-      'Inbound digital agency inquiries required manual triage, suffering delayed qualification and high human lead capture latency during off-hours.',
+      'Inbound digital agency inquiries required manual triage, resulting in high lead capture latency during off-hours and missed sales conversion opportunities.',
     solution:
-      'Architected a production RAG-powered agent using n8n workflow orchestration, Pinecone vector database, and Gemini embeddings to autonomously qualify incoming leads and answer service questions.',
-    results: [
-      'Shipped and deployed for a live business client (AJ Digital Agency, Mardan).',
-      'Engineered robust document ingestion pipelines with chunking and similarity threshold safeguards.',
-      'Designed structured system prompt chains focused on conversion-driven qualification.',
+      'Architected a production RAG agent using n8n workflow orchestration, Pinecone vector database, and Gemini embeddings to autonomously qualify incoming client leads and answer service inquiries 24/7.',
+    keyOutcomes: [
+      'Shipped and deployed for a real business client (AJ Digital Agency).',
+      'Engineered chunking and similarity threshold safeguards against hallucinations.',
+      'Designed structured system prompt chains focused on lead capture outcomes.',
     ],
     stack: ['n8n', 'Pinecone Vector DB', 'Gemini Embeddings', 'Prompt Engineering', 'Webhooks'],
-    architecture: `[User Webhook Query] ──► [n8n Workflow Engine] ──► [Gemini Embeddings] ──► [Pinecone Vector Retrieval]
-                                                          │
-                                                          └──► [Structured Prompt Guardrails] ──► [Qualified Lead]`,
+    topologySteps: [
+      { label: 'Webhook Ingestion', text: 'Client chat inquiry received via secure HTTP endpoint' },
+      { label: 'Vector Retrieval', text: 'Gemini embedding lookup against Pinecone knowledge index' },
+      { label: 'Prompt Orchestration', text: 'n8n workflow executing role guardrails and intent triage' },
+      { label: 'Lead Dispatch', text: 'Structured qualification payload forwarded to CRM' },
+    ],
     links: [
-      { label: 'System Spec', url: '/projects/aj-digital-support-agent', internal: true },
+      { label: 'Architecture Breakdown', url: '/projects/aj-digital-support-agent', isExternal: false },
     ],
   },
 ];
@@ -78,6 +93,7 @@ const FLAGSHIP_SYSTEMS = [
 export default function SelectedWork() {
   return (
     <section id="selected-work" className="selected-work-section">
+      {/* Section Header */}
       <div className="section-header-row mono">
         <div className="section-title-wrap">
           <span className="section-number">02</span>
@@ -88,65 +104,92 @@ export default function SelectedWork() {
         </Link>
       </div>
 
+      {/* Flagship Cards Container */}
       <div className="flagship-list">
         {FLAGSHIP_SYSTEMS.map((sys, idx) => (
           <article key={sys.slug} className="flagship-card">
-            {/* Top Bar */}
-            <div className="flagship-top">
-              <div className="flagship-eyebrow-wrap mono">
-                <span className="flagship-index">SYS_0{idx + 1}</span>
-                <span className="flagship-eyebrow">{sys.eyebrow}</span>
+            {/* ── Top Metadata Bar ── */}
+            <header className="flagship-header">
+              <div className="flagship-header-left">
+                <span className="flagship-idx mono">SYSTEM_0{idx + 1}</span>
+                <span className="flagship-category mono">{sys.category}</span>
               </div>
-              <div className="flagship-badge-wrap">
+              <div className="flagship-header-right mono">
                 <StatusBadge status={sys.status} />
-                <span className="flagship-status-label mono">{sys.statusLabel}</span>
+                <span className="flagship-status-pill">{sys.statusLabel}</span>
+              </div>
+            </header>
+
+            {/* ── Title & Lead Metric Row ── */}
+            <div className="flagship-title-row">
+              <h3 className="flagship-name mono">{sys.name}</h3>
+              <div className="flagship-metric-badge mono">
+                <span className="metric-val">{sys.highlightMetric}</span>
+                <span className="metric-desc">{sys.highlightDesc}</span>
               </div>
             </div>
 
-            {/* Title & Core Grid */}
-            <h3 className="flagship-title mono">{sys.name}</h3>
-
-            <div className="flagship-grid">
-              {/* Problem / Solution Column */}
-              <div className="flagship-desc-col">
-                <div className="flagship-block">
-                  <span className="flagship-label mono">THE CHALLENGE:</span>
-                  <p className="flagship-text">{sys.problem}</p>
+            {/* ── 2-Column Balanced Grid ── */}
+            <div className="flagship-content-grid">
+              {/* Left Column: Problem, Architecture, Results */}
+              <div className="flagship-core-col">
+                <div className="flagship-field">
+                  <span className="field-label mono">THE ENGINEERING CHALLENGE:</span>
+                  <p className="field-text">{sys.problem}</p>
                 </div>
 
-                <div className="flagship-block">
-                  <span className="flagship-label mono">SYSTEM ARCHITECTURE:</span>
-                  <p className="flagship-text">{sys.solution}</p>
+                <div className="flagship-field">
+                  <span className="field-label mono">SYSTEM ARCHITECTURE:</span>
+                  <p className="field-text">{sys.solution}</p>
                 </div>
 
-                <div className="flagship-block flagship-block--results">
-                  <span className="flagship-label mono">EVALUATED RESULTS:</span>
-                  <ul className="flagship-results-list">
-                    {sys.results.map((res, rIdx) => (
-                      <li key={rIdx}>{res}</li>
+                <div className="flagship-field flagship-field--outcomes">
+                  <span className="field-label mono">KEY OUTCOMES &amp; BENCHMARKS:</span>
+                  <ul className="outcomes-list">
+                    {sys.keyOutcomes.map((item, i) => (
+                      <li key={i}>{item}</li>
                     ))}
                   </ul>
                 </div>
+              </div>
 
-                <div className="flagship-tech-row">
-                  <span className="flagship-label mono">STACK:</span>
-                  <div className="flagship-pills">
-                    {sys.stack.map((item) => (
-                      <span key={item} className="flagship-pill mono">
-                        {item}
+              {/* Right Column: Execution Topology & Stack */}
+              <div className="flagship-side-col">
+                {/* Pipeline Steps */}
+                <div className="topology-box">
+                  <div className="topology-header mono">
+                    <span className="topology-dot" />
+                    <span>SYSTEM EXECUTION TOPOLOGY</span>
+                  </div>
+                  <div className="topology-body">
+                    {sys.topologySteps.map((step, sIdx) => (
+                      <div key={sIdx} className="topology-step">
+                        <div className="topology-step-header mono">
+                          <span className="step-num">0{sIdx + 1}</span>
+                          <span className="step-label">{step.label}</span>
+                        </div>
+                        <p className="step-text">{step.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tech Stack Pills */}
+                <div className="flagship-stack-block">
+                  <span className="field-label mono">PRODUCTION STACK:</span>
+                  <div className="stack-pills-wrap">
+                    {sys.stack.map((tech) => (
+                      <span key={tech} className="stack-pill-card mono">
+                        {tech}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Actions */}
-                <div className="flagship-actions">
+                {/* Action Links */}
+                <div className="flagship-cta-row">
                   {sys.links.map((link) =>
-                    link.internal ? (
-                      <Link key={link.label} to={link.url} className="btn btn-secondary mono btn-sm">
-                        <span>→</span> {link.label}
-                      </Link>
-                    ) : (
+                    link.isExternal ? (
                       <a
                         key={link.label}
                         href={link.url}
@@ -156,21 +199,16 @@ export default function SelectedWork() {
                       >
                         <span>↗</span> {link.label}
                       </a>
+                    ) : (
+                      <Link
+                        key={link.label}
+                        to={link.url}
+                        className="btn btn-secondary mono btn-sm"
+                      >
+                        <span>→</span> {link.label}
+                      </Link>
                     )
                   )}
-                </div>
-              </div>
-
-              {/* Architecture Blueprint Visualization */}
-              <div className="flagship-diagram-col">
-                <div className="diagram-card">
-                  <div className="diagram-header mono">
-                    <span className="diagram-dot" />
-                    <span>system_topology.diag</span>
-                  </div>
-                  <div className="diagram-body">
-                    <pre className="diagram-code mono">{sys.architecture}</pre>
-                  </div>
                 </div>
               </div>
             </div>
@@ -178,11 +216,16 @@ export default function SelectedWork() {
         ))}
       </div>
 
+      {/* Directory Routing Footer */}
       <div className="more-projects-callout mono">
-        <span className="callout-prompt">$ find ~/projects -type f</span>
-        <span className="callout-text">Looking for LLM tools, AutoInsight AI, PlanCraft 3D, or escrow systems?</span>
+        <div className="callout-content">
+          <span className="callout-prompt">$ find ~/projects -type f</span>
+          <span className="callout-text">
+            Explore 34+ additional repositories: LLM tools, AutoInsight AI, PlanCraft 3D, and Escrow infrastructure.
+          </span>
+        </div>
         <Link to="/projects" className="callout-btn">
-          Open Projects Directory [34+] →
+          Open Projects Archive [34+] →
         </Link>
       </div>
     </section>
