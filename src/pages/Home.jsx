@@ -16,32 +16,32 @@ export default function Home() {
 
   return (
     <div className="container home-page">
-      {/* 01: Hero Console */}
+      {/* Hero */}
       <HomeHero />
 
-      {/* 02: Evidence & Benchmark Proof Bar */}
+      {/* Highlights & Evidence Bar */}
       <ProofBar repoCount={repoCount} />
 
-      {/* 03: Engineering Capabilities Matrix */}
+      {/* 01: Capabilities & Core Focus */}
       <CapabilitiesMatrix />
 
-      {/* 04: Flagship Selected Systems (Top 3 with Architecture Diagrams) */}
+      {/* 02: Featured Flagship Projects */}
       <SelectedWork />
 
-      {/* 05: Engineering Methodology */}
+      {/* 03: How I Build & Solve Problems */}
       <EngineeringApproach />
 
-      {/* 06: Currently Building / Active Processes */}
+      {/* 04: Currently Building & System Status */}
       <CurrentlyBuilding />
 
-      {/* 07: Interactive Terminal Shell & Neofetch Telemetry */}
+      {/* 05: Interactive Workstation & Telemetry */}
       {loading ? (
         <CliLoader />
       ) : (
         <InteractiveConsole repoCount={repoCount} />
       )}
 
-      {/* 08: Direct Deployment & Contact Terminal */}
+      {/* 06: Get in Touch & Contact */}
       <HomeContact />
     </div>
   );

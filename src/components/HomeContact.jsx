@@ -15,10 +15,10 @@ export default function HomeContact() {
     <section className="home-contact-section">
       <div className="section-header-row mono">
         <div className="section-title-wrap">
-          <span className="section-number">05</span>
-          <h2 className="section-heading">DEPLOYMENT &amp; DIRECT CONTACT</h2>
+          <span className="section-number">06</span>
+          <h2 className="section-heading">GET IN TOUCH &amp; CONTACT</h2>
         </div>
-        <span className="section-context">INITIATE_CONTACT // AVAILABLE FOR HIRE</span>
+        <span className="section-context">// AVAILABLE FOR 2026/2027 ROLES</span>
       </div>
 
       <div className="contact-terminal-box">
