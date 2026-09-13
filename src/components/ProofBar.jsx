@@ -31,8 +31,8 @@ export default function ProofBar({ repoCount = 34 }) {
   return (
     <section className="proof-bar">
       <div className="proof-bar-header mono">
-        <span className="proof-header-tag">[SYSTEM VERIFICATION]</span>
-        <span className="proof-header-title">Validated Benchmarks &amp; Engineering Evidence</span>
+        <span className="proof-header-tag">// HIGHLIGHTS</span>
+        <span className="proof-header-title">Key Achievements &amp; Verified Work</span>
       </div>
 
       <div className="proof-bar-grid">
