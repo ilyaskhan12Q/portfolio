@@ -2,29 +2,34 @@ import './EngineeringApproach.css';
 
 const STEPS = [
   {
-    phase: '01_RESEARCH',
-    name: 'Formulate & Deconstruct',
-    desc: 'Audit mathematical foundations, inspect existing paper implementations, and isolate the exact performance or architectural bottleneck.',
+    stepNumber: '01',
+    phase: 'RESEARCH',
+    name: 'Understand & Deconstruct',
+    desc: 'Audit real problems, research papers and benchmarks, and isolate exact performance bottlenecks before writing code.',
   },
   {
-    phase: '02_ARCHITECT',
-    name: 'Decouple & Blueprint',
-    desc: 'Design modular boundaries before touching code. Separate generation logic from rendering, storage from compute, and interface from orchestration.',
+    stepNumber: '02',
+    phase: 'ARCHITECT',
+    name: 'Design Clean Boundaries',
+    desc: 'Plan modular architectures. Keep data separate from compute, business logic decoupled from UI, and interfaces clearly typed.',
   },
   {
-    phase: '03_BUILD',
-    name: 'Type-Safe Execution',
-    desc: 'Implement clean, verifiable pipelines in Python, C++, or TypeScript. Avoid bloated dependencies in favor of lean standard libraries and focused frameworks.',
+    stepNumber: '03',
+    phase: 'BUILD',
+    name: 'Focused Implementation',
+    desc: 'Build clean, maintainable systems using Python, C++, or TypeScript. Prefer lean standard tooling over bloated dependencies.',
   },
   {
-    phase: '04_MEASURE',
-    name: 'Empirical Verification',
-    desc: 'Benchmark model ROC-AUC, API latencies, inference tokens/sec, and hardware telemetry. Optimize based on profile traces, not speculation.',
+    stepNumber: '04',
+    phase: 'BENCHMARK',
+    name: 'Verify & Benchmark',
+    desc: 'Measure performance with hard metrics—ROC-AUC, API latency, tokens/sec, and hardware telemetry. Optimize from real traces.',
   },
   {
-    phase: '05_DEPLOY',
-    name: 'Edge & Cloud Stability',
-    desc: 'Ship to real environments—whether client webhooks on n8n/Pinecone, headless Linux servers, or microcontrollers running ArduCopter.',
+    stepNumber: '05',
+    phase: 'DEPLOY',
+    name: 'Ship to Real Worlds',
+    desc: 'Deliver robust solutions—from automated client workflows in production to headless Linux servers and physical UAV flight controllers.',
   },
 ];
 
@@ -34,17 +39,17 @@ export default function EngineeringApproach() {
       <div className="section-header-row mono">
         <div className="section-title-wrap">
           <span className="section-number">03</span>
-          <h2 className="section-heading">ENGINEERING METHODOLOGY</h2>
+          <h2 className="section-heading">HOW I BUILD &amp; SOLVE PROBLEMS</h2>
         </div>
-        <span className="section-context">PIPELINE // HOW I SOLVE PROBLEMS</span>
+        <span className="section-context">// PROCESS &amp; METHODOLOGY</span>
       </div>
 
       <div className="approach-flow">
-        {STEPS.map((step, idx) => (
-          <div key={step.phase} className="approach-step">
+        {STEPS.map((step) => (
+          <div key={step.stepNumber} className="approach-step">
             <div className="approach-step-top mono">
-              <span className="step-phase">{step.phase}</span>
-              <span className="step-index">STEP_{idx + 1}</span>
+              <span className="step-index">STEP_{step.stepNumber}</span>
+              <span className="step-phase">[{step.phase}]</span>
             </div>
             <h3 className="step-name mono">{step.name}</h3>
             <p className="step-desc">{step.desc}</p>
