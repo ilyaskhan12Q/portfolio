@@ -2,36 +2,32 @@ import './CapabilitiesMatrix.css';
 
 const DOMAINS = [
   {
-    domain: 'AI / Machine Learning',
-    code: '01_AI_ML',
-    what: 'Predictive modeling, multi-omics biomarker classification, and model explainability.',
-    how: 'PyTorch, scikit-learn, XGBoost, SHAP Values, Pandas, NumPy.',
-    evidence: 'NeoHack 2025 Winner (1.00 AUC Cancer Omics Classifier); AutoInsight automated EDA pipeline.',
-    tags: ['Supervised Learning', 'Multi-Modal Fusion', 'SHAP Explainability', 'Genomics Data'],
+    domain: 'AI & Machine Learning',
+    code: '// 01_AI_ML',
+    summary: 'Building high-precision predictive models, multi-modal clinical ML, and explainable AI systems.',
+    evidence: 'NeoHack 2025 1st Place Winner (1.00 AUC Cancer Omics Classifier); AutoInsight automated pipeline.',
+    stack: ['Python', 'PyTorch', 'scikit-learn', 'XGBoost', 'SHAP', 'Pandas'],
   },
   {
-    domain: 'Agentic AI & Orchestration',
-    code: '02_AGENTIC',
-    what: 'Autonomous LLM agent workflows, RAG knowledge retrieval, and generative pipeline design.',
-    how: 'LangChain, Gemini / Claude API, Pinecone Vector DB, n8n, Supabase.',
-    evidence: 'Production support agent deployed for AJ Digital Agency; LangChain AI Doctor triage agent.',
-    tags: ['Multi-Agent Loops', 'Vector Search / RAG', 'Prompt Engineering', 'n8n Workflows'],
+    domain: 'Autonomous Agents & LLMs',
+    code: '// 02_AGENTS_LLM',
+    summary: 'Designing multi-agent workflows, vector retrieval (RAG), and real-world production automation.',
+    evidence: 'Production support agent for AJ Digital Agency; LangChain clinical triage assistant.',
+    stack: ['LangChain', 'Claude & Gemini API', 'Pinecone', 'n8n', 'Supabase'],
   },
   {
-    domain: 'Systems & Autonomous Hardware',
-    code: '03_HARDWARE_SYS',
-    what: 'Hardware-in-the-loop autonomous aerial flight control and systems-level programming.',
-    how: 'C++ (OOP/DSA), Linux, Pixhawk 2.4.8, ArduCopter firmware, GPS waypoint navigation.',
-    evidence: 'Autonomous Parcel Delivery Drone (APDD) capstone project with servo-actuated payload release.',
-    tags: ['Pixhawk / ArduCopter', 'Autonomous Mission Planning', 'Embedded Control', 'Linux Systems'],
+    domain: 'Autonomous Hardware & UAVs',
+    code: '// 03_HARDWARE_SYS',
+    summary: 'Hardware-in-the-loop autonomous aerial robotics, GPS navigation, and low-level embedded control.',
+    evidence: 'Autonomous Parcel Delivery Drone (APDD) capstone with fail-safe servo payload mechanics.',
+    stack: ['Pixhawk 2.4.8', 'ArduCopter', 'C++', 'Linux', 'GPS Waypoints'],
   },
   {
-    domain: 'Engineering & Data Platforms',
-    code: '04_ENGINEERING',
-    what: 'Full-stack client applications, API services, decoupled document generation engines.',
-    how: 'TypeScript, React, Node.js, FastAPI, SQL/PostgreSQL, Docker, Git.',
-    evidence: 'DocSmith document engine, FlexStock inventory control, SpreadsheetAppBuilder decoupled engine.',
-    tags: ['REST APIs', 'PostgreSQL / Supabase', 'Vite / React', 'Async Queues (Redis/Celery)'],
+    domain: 'Full-Stack & Systems Engineering',
+    code: '// 04_SYSTEMS',
+    summary: 'Clean modern web applications, high-throughput APIs, and decoupled document processing engines.',
+    evidence: 'DocSmith document engine, FlexStock inventory control, SpreadsheetAppBuilder core.',
+    stack: ['TypeScript', 'React / Vite', 'FastAPI', 'PostgreSQL', 'Docker'],
   },
 ];
 
@@ -41,9 +37,9 @@ export default function CapabilitiesMatrix() {
       <div className="section-header-row mono">
         <div className="section-title-wrap">
           <span className="section-number">01</span>
-          <h2 className="section-heading">CAPABILITIES &amp; ENGINEERING DOMAINS</h2>
+          <h2 className="section-heading">CAPABILITIES &amp; CORE FOCUS</h2>
         </div>
-        <span className="section-context">DOMAIN_INVENTORY // VERIFIED SKILLS</span>
+        <span className="section-context">// WHAT I BUILD</span>
       </div>
 
       <div className="capabilities-grid">
@@ -51,28 +47,20 @@ export default function CapabilitiesMatrix() {
           <div key={item.code} className="capability-card">
             <div className="capability-top mono">
               <span className="capability-code">{item.code}</span>
-              <span className="capability-domain">{item.domain}</span>
+              <h3 className="capability-domain">{item.domain}</h3>
             </div>
 
-            <div className="capability-block">
-              <span className="capability-label mono">WHAT:</span>
-              <p className="capability-text">{item.what}</p>
-            </div>
+            <p className="capability-summary">{item.summary}</p>
 
-            <div className="capability-block">
-              <span className="capability-label mono">HOW / STACK:</span>
-              <p className="capability-text capability-stack mono">{item.how}</p>
-            </div>
-
-            <div className="capability-block capability-block--evidence">
-              <span className="capability-label mono">EVIDENCE:</span>
-              <p className="capability-text capability-evidence">{item.evidence}</p>
+            <div className="capability-highlight">
+              <span className="capability-highlight-label mono">PROVEN WORK:</span>
+              <p className="capability-highlight-text">{item.evidence}</p>
             </div>
 
             <div className="capability-tags">
-              {item.tags.map((tag) => (
-                <span key={tag} className="capability-tag mono">
-                  {tag}
+              {item.stack.map((tech) => (
+                <span key={tech} className="capability-tag mono">
+                  {tech}
                 </span>
               ))}
             </div>

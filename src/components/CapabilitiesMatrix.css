@@ -2,40 +2,6 @@
   margin: 48px 0;
 }
 
-.section-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--surface-border);
-  margin-bottom: 24px;
-}
-
-.section-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.section-number {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.section-heading {
-  font-size: 14px;
-  color: var(--text);
-  letter-spacing: 0.08em;
-  margin: 0;
-}
-
-.section-context {
-  font-size: 11px;
-  color: var(--text-faint);
-  letter-spacing: 0.05em;
-}
-
 .capabilities-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -49,7 +15,7 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -61,8 +27,8 @@
 .capability-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 10px;
+  gap: 10px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -73,45 +39,40 @@
 }
 
 .capability-domain {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
   font-weight: 600;
+  margin: 0;
 }
 
-.capability-block {
+.capability-summary {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.capability-highlight {
+  background: rgba(0, 255, 102, 0.025);
+  border-left: 2px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 var(--radius) var(--radius) 0;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.capability-label {
+.capability-highlight-label {
   font-size: 10px;
-  color: var(--text-faint);
+  color: var(--accent-dim);
   letter-spacing: 0.06em;
 }
 
-.capability-text {
-  font-size: 13px;
-  color: var(--text-dim);
-  line-height: 1.5;
+.capability-highlight-text {
+  color: var(--text);
+  font-size: 12.5px;
+  line-height: 1.45;
   margin: 0;
-}
-
-.capability-stack {
-  color: var(--text);
-  font-size: 12px;
-}
-
-.capability-block--evidence {
-  background: rgba(0, 255, 102, 0.02);
-  border-left: 2px solid var(--accent);
-  padding: 8px 12px;
-}
-
-.capability-evidence {
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 500;
 }
 
 .capability-tags {
@@ -119,12 +80,12 @@
   flex-wrap: wrap;
   gap: 6px;
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .capability-tag {
-  font-size: 10px;
-  padding: 2px 7px;
+  font-size: 10.5px;
+  padding: 3px 8px;
   background: var(--surface);
   border: 1px solid var(--surface-border);
   color: var(--text-dim);
