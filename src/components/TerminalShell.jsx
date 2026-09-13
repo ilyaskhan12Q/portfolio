@@ -84,9 +84,15 @@ function buildOutput(cmd, navigate, projectsList = projects) {
   return [{ text: `command not found: ${cmd}  (try 'help')`, type: 'error' }];
 }
 
-export default function TerminalShell() {
+export default function TerminalShell({ externalCommand = null }) {
   const [history, setHistory] = useState([
-    { prompt: null, lines: [{ text: "Type 'help' for available commands.", type: 'dim' }] },
+    {
+      prompt: null,
+      lines: [
+        { text: 'ilyaskhan portfolio workstation v2.0', type: 'dim' },
+        { text: "Type 'help' or click any shortcut below to inspect profile & projects.", type: 'normal' },
+      ],
+    },
   ]);
   const [cmdHistory, setCmdHistory] = useState([]);
   const [histIdx, setHistIdx] = useState(-1);
@@ -107,9 +113,8 @@ export default function TerminalShell() {
     inputRef.current?.focus();
   }
 
-  function submit(e) {
-    e.preventDefault();
-    const cmd = input.trim();
+  function executeCommand(rawCmd) {
+    const cmd = rawCmd.trim();
     const output = buildOutput(cmd, navigate, dynamicProjects.length ? dynamicProjects : projects);
 
     if (output === '__CLEAR__') {
@@ -124,6 +129,18 @@ export default function TerminalShell() {
     setHistIdx(-1);
     setInput('');
   }
+
+  function submit(e) {
+    e.preventDefault();
+    executeCommand(input);
+  }
+
+  // Allow parent components to pass a command trigger
+  useEffect(() => {
+    if (externalCommand) {
+      executeCommand(externalCommand);
+    }
+  }, [externalCommand]);
 
   function handleKeyDown(e) {
     if (e.key === 'ArrowUp') {

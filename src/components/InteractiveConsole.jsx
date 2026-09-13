@@ -3,22 +3,37 @@ import TerminalShell from './TerminalShell';
 import Neofetch from './Neofetch';
 import './InteractiveConsole.css';
 
+const QUICK_COMMANDS = [
+  { label: 'whoami', cmd: 'whoami', desc: 'Bio & Role' },
+  { label: 'skills', cmd: 'skills', desc: 'Tech Stack' },
+  { label: 'projects', cmd: 'ls projects', desc: 'Flagship Repos' },
+  { label: 'status', cmd: 'status', desc: 'Availability' },
+  { label: 'help', cmd: 'help', desc: 'All Commands' },
+];
+
 export default function InteractiveConsole({ repoCount = 34 }) {
   const [activeTab, setActiveTab] = useState('shell'); // 'shell' or 'neofetch'
+  const [activeCmd, setActiveCmd] = useState(null);
+
+  const handleQuickCmd = (cmd) => {
+    setActiveTab('shell');
+    // Generate a unique command string or refresh trigger
+    setActiveCmd({ text: cmd, timestamp: Date.now() });
+  };
 
   return (
     <section className="interactive-console-section">
       <div className="section-header-row mono">
         <div className="section-title-wrap">
-          <span className="section-number">06</span>
-          <h2 className="section-heading">INTERACTIVE TELEMETRY &amp; CLI</h2>
+          <span className="section-number">05</span>
+          <h2 className="section-heading">INTERACTIVE WORKSTATION &amp; TELEMETRY</h2>
         </div>
         <div className="console-tab-buttons mono">
           <button
             className={`console-tab-btn ${activeTab === 'shell' ? 'active' : ''}`}
             onClick={() => setActiveTab('shell')}
           >
-            [interactive_shell]
+            [cli_terminal]
           </button>
           <button
             className={`console-tab-btn ${activeTab === 'neofetch' ? 'active' : ''}`}
@@ -30,19 +45,27 @@ export default function InteractiveConsole({ repoCount = 34 }) {
       </div>
 
       <div className="console-wrapper">
+        {/* Quick-action interactive chips bar */}
+        <div className="console-quick-bar mono">
+          <span className="quick-bar-label">QUICK_ACTIONS:</span>
+          <div className="quick-chips">
+            {QUICK_COMMANDS.map((qc) => (
+              <button
+                key={qc.label}
+                className="quick-chip-btn"
+                onClick={() => handleQuickCmd(qc.cmd)}
+                title={qc.desc}
+              >
+                <span className="quick-chip-cmd">$ {qc.label}</span>
+                <span className="quick-chip-desc">({qc.desc})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {activeTab === 'shell' ? (
           <div className="console-shell-container">
-            <div className="console-intro-bar mono">
-              <span className="intro-prompt">$ ./interactive_cli</span>
-              <span className="intro-help">
-                Try running: <span className="cmd-tag">whoami</span> ·{' '}
-                <span className="cmd-tag">skills</span> ·{' '}
-                <span className="cmd-tag">ls projects</span> ·{' '}
-                <span className="cmd-tag">status</span> ·{' '}
-                <span className="cmd-tag">help</span>
-              </span>
-            </div>
-            <TerminalShell />
+            <TerminalShell externalCommand={activeCmd?.text} />
           </div>
         ) : (
           <div className="console-neofetch-container">

@@ -37,32 +37,62 @@
   box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
-.console-intro-bar {
+/* Quick-action interactive chips bar */
+.console-quick-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
+  gap: 12px;
+  padding: 10px 16px;
   background: var(--surface);
   border-bottom: 1px solid var(--surface-border);
   font-size: 11px;
   flex-wrap: wrap;
-  gap: 8px;
 }
 
-.intro-prompt {
+.quick-bar-label {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.quick-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.quick-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 255, 102, 0.05);
+  border: 1px solid rgba(0, 255, 102, 0.2);
+  color: var(--text);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quick-chip-btn:hover {
+  background: rgba(0, 255, 102, 0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.quick-chip-cmd {
   color: var(--accent);
   font-weight: 600;
 }
 
-.intro-help {
+.quick-chip-desc {
   color: var(--text-dim);
-}
-
-.cmd-tag {
-  color: var(--accent);
-  background: rgba(0, 255, 102, 0.08);
-  padding: 1px 4px;
-  border-radius: 2px;
+  font-size: 10px;
 }
 
 .console-shell-container {
