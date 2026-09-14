@@ -84,22 +84,35 @@ function buildOutput(cmd, navigate, projectsList = projects) {
   return [{ text: `command not found: ${cmd}  (try 'help')`, type: 'error' }];
 }
 
-export default function TerminalShell() {
+export default function TerminalShell({ externalCommand = null }) {
   const [history, setHistory] = useState([
-    { prompt: null, lines: [{ text: "Type 'help' for available commands.", type: 'dim' }] },
+    {
+      prompt: null,
+      lines: [
+        { text: 'ilyaskhan portfolio workstation v2.0', type: 'dim' },
+        { text: "Type 'help' or click any shortcut below to inspect profile & projects.", type: 'normal' },
+      ],
+    },
   ]);
   const [cmdHistory, setCmdHistory] = useState([]);
   const [histIdx, setHistIdx] = useState(-1);
   const [input, setInput] = useState('');
   const inputRef = useRef(null);
-  const bottomRef = useRef(null);
+  const shellContainerRef = useRef(null);
+  const isInitialMount = useRef(true);
   const navigate = useNavigate();
 
   const { projects: dynamicProjects } = useGitHubProjects();
 
-  // Auto-scroll on new output
+  // Auto-scroll ONLY within the terminal shell box when user runs a command, never scrolling the browser window
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (shellContainerRef.current) {
+      shellContainerRef.current.scrollTop = shellContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   // Focus input when clicking anywhere in shell
@@ -107,9 +120,8 @@ export default function TerminalShell() {
     inputRef.current?.focus();
   }
 
-  function submit(e) {
-    e.preventDefault();
-    const cmd = input.trim();
+  function executeCommand(rawCmd) {
+    const cmd = rawCmd.trim();
     const output = buildOutput(cmd, navigate, dynamicProjects.length ? dynamicProjects : projects);
 
     if (output === '__CLEAR__') {
@@ -124,6 +136,18 @@ export default function TerminalShell() {
     setHistIdx(-1);
     setInput('');
   }
+
+  function submit(e) {
+    e.preventDefault();
+    executeCommand(input);
+  }
+
+  // Allow parent components to pass a command trigger
+  useEffect(() => {
+    if (externalCommand) {
+      executeCommand(externalCommand);
+    }
+  }, [externalCommand]);
 
   function handleKeyDown(e) {
     if (e.key === 'ArrowUp') {
@@ -143,7 +167,13 @@ export default function TerminalShell() {
   const prompt = `${USER}@${HOSTNAME}:~$`;
 
   return (
-    <div className="tshell" onClick={focusInput} role="region" aria-label="Interactive terminal">
+    <div
+      ref={shellContainerRef}
+      className="tshell"
+      onClick={focusInput}
+      role="region"
+      aria-label="Interactive terminal"
+    >
       <div className="tshell-output">
         {history.map((entry, i) => (
           <div key={i} className="tshell-entry">
