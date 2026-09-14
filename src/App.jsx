@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import ScrollManager from './components/ScrollManager';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
@@ -11,6 +12,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <>
+      <ScrollManager />
       <Nav />
       <main>
         <Routes>
