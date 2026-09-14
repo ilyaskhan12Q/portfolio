@@ -1,4 +1,5 @@
 import StatusBadge from './StatusBadge';
+import SpotlightCard from './ui/SpotlightCard';
 import './CurrentlyBuilding.css';
 
 const ACTIVE_SYSTEMS = [
@@ -38,7 +39,7 @@ export default function CurrentlyBuilding() {
 
       <div className="current-grid">
         {ACTIVE_SYSTEMS.map((sys) => (
-          <div key={sys.name} className="current-card">
+          <SpotlightCard key={sys.name} className="current-card">
             <div className="current-top mono">
               <span className="current-cat">{sys.category}</span>
               <StatusBadge status={sys.status} />
@@ -48,7 +49,7 @@ export default function CurrentlyBuilding() {
             <div className="current-stack mono">
               <span className="stack-label">STACK:</span> {sys.stack}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>

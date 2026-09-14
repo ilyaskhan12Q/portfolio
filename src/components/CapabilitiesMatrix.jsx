@@ -1,3 +1,4 @@
+import SpotlightCard from './ui/SpotlightCard';
 import './CapabilitiesMatrix.css';
 
 const DOMAINS = [
@@ -44,7 +45,7 @@ export default function CapabilitiesMatrix() {
 
       <div className="capabilities-grid">
         {DOMAINS.map((item) => (
-          <div key={item.code} className="capability-card">
+          <SpotlightCard key={item.code} className="capability-card">
             <div className="capability-top mono">
               <span className="capability-code">{item.code}</span>
               <h3 className="capability-domain">{item.domain}</h3>
@@ -64,7 +65,7 @@ export default function CapabilitiesMatrix() {
                 </span>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>

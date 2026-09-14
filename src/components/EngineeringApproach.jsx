@@ -1,3 +1,4 @@
+import SpotlightCard from './ui/SpotlightCard';
 import './EngineeringApproach.css';
 
 const STEPS = [
@@ -46,14 +47,14 @@ export default function EngineeringApproach() {
 
       <div className="approach-flow">
         {STEPS.map((step) => (
-          <div key={step.stepNumber} className="approach-step">
+          <SpotlightCard key={step.stepNumber} className="approach-step">
             <div className="approach-step-top mono">
               <span className="step-index">STEP_{step.stepNumber}</span>
               <span className="step-phase">[{step.phase}]</span>
             </div>
             <h3 className="step-name mono">{step.name}</h3>
             <p className="step-desc">{step.desc}</p>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>
