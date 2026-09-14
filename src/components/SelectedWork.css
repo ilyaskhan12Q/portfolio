@@ -190,6 +190,11 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pipeline-step-item:hover {
+  transform: translateY(-2px);
 }
 
 .pipeline-step-node {
@@ -200,6 +205,17 @@
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pipeline-step-node:hover,
+.pipeline-step-node:focus-visible {
+  border-color: var(--accent);
+  background: rgba(0, 255, 102, 0.08);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+  transform: scale(1.05);
+  outline: none;
 }
 
 .step-num {
@@ -212,18 +228,34 @@
   font-size: 11px;
   color: var(--text);
   font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.pipeline-step-node:hover .step-title {
+  color: #fff;
 }
 
 .step-desc {
   font-size: 11px;
   color: var(--text-dim);
   white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.pipeline-step-item:hover .step-desc {
+  color: var(--text);
 }
 
 .step-arrow {
   color: var(--accent-dim);
   font-size: 12px;
   margin-left: 2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.pipeline-step-item:hover .step-arrow {
+  transform: translateX(2px);
+  color: var(--accent);
 }
 
 /* ── Outcomes & Tech Stack Grid ── */

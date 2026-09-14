@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import StatusBadge from './StatusBadge';
+import SpotlightCard from './ui/SpotlightCard';
 import './SelectedWork.css';
 
 const FLAGSHIP_SYSTEMS = [
@@ -107,7 +108,7 @@ export default function SelectedWork() {
       {/* Flagship Cards Container */}
       <div className="flagship-list">
         {FLAGSHIP_SYSTEMS.map((sys, idx) => (
-          <article key={sys.slug} className="flagship-card">
+          <SpotlightCard key={sys.slug} className="flagship-card">
             {/* Top Metadata Bar */}
             <header className="flagship-header">
               <div className="flagship-header-left">
@@ -150,7 +151,7 @@ export default function SelectedWork() {
               <div className="pipeline-steps-flow">
                 {sys.topologySteps.map((step, sIdx) => (
                   <div key={sIdx} className="pipeline-step-item">
-                    <div className="pipeline-step-node mono">
+                    <div className="pipeline-step-node mono" tabIndex={0}>
                       <span className="step-num">0{sIdx + 1}</span>
                       <span className="step-title">{step.label}</span>
                     </div>
@@ -209,7 +210,7 @@ export default function SelectedWork() {
                 </div>
               </div>
             </div>
-          </article>
+          </SpotlightCard>
         ))}
       </div>
 
