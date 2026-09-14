@@ -98,14 +98,21 @@ export default function TerminalShell({ externalCommand = null }) {
   const [histIdx, setHistIdx] = useState(-1);
   const [input, setInput] = useState('');
   const inputRef = useRef(null);
-  const bottomRef = useRef(null);
+  const shellContainerRef = useRef(null);
+  const isInitialMount = useRef(true);
   const navigate = useNavigate();
 
   const { projects: dynamicProjects } = useGitHubProjects();
 
-  // Auto-scroll on new output
+  // Auto-scroll ONLY within the terminal shell box when user runs a command, never scrolling the browser window
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (shellContainerRef.current) {
+      shellContainerRef.current.scrollTop = shellContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   // Focus input when clicking anywhere in shell
@@ -160,7 +167,13 @@ export default function TerminalShell({ externalCommand = null }) {
   const prompt = `${USER}@${HOSTNAME}:~$`;
 
   return (
-    <div className="tshell" onClick={focusInput} role="region" aria-label="Interactive terminal">
+    <div
+      ref={shellContainerRef}
+      className="tshell"
+      onClick={focusInput}
+      role="region"
+      aria-label="Interactive terminal"
+    >
       <div className="tshell-output">
         {history.map((entry, i) => (
           <div key={i} className="tshell-entry">
