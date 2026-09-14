@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import TerminalShell from './TerminalShell';
 import Neofetch from './Neofetch';
 import './InteractiveConsole.css';
@@ -29,18 +30,22 @@ export default function InteractiveConsole({ repoCount = 34 }) {
           <h2 className="section-heading">INTERACTIVE WORKSTATION &amp; TELEMETRY</h2>
         </div>
         <div className="console-tab-buttons mono">
-          <button
+          <motion.button
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.96 }}
             className={`console-tab-btn ${activeTab === 'shell' ? 'active' : ''}`}
             onClick={() => setActiveTab('shell')}
           >
             [cli_terminal]
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.96 }}
             className={`console-tab-btn ${activeTab === 'neofetch' ? 'active' : ''}`}
             onClick={() => setActiveTab('neofetch')}
           >
             [system_neofetch]
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -50,15 +55,18 @@ export default function InteractiveConsole({ repoCount = 34 }) {
           <span className="quick-bar-label">QUICK_ACTIONS:</span>
           <div className="quick-chips">
             {QUICK_COMMANDS.map((qc) => (
-              <button
+              <motion.button
                 key={qc.label}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 className="quick-chip-btn"
                 onClick={() => handleQuickCmd(qc.cmd)}
                 title={qc.desc}
               >
                 <span className="quick-chip-cmd">$ {qc.label}</span>
                 <span className="quick-chip-desc">({qc.desc})</span>
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
